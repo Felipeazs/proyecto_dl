@@ -1,5 +1,7 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react'
 
+import useHttp from '../hooks/http-hook'
+
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
@@ -8,6 +10,7 @@ import Button from '../components/ui/Button'
 import styles from './Login.module.css'
 
 const Login = () => {
+    const { loginUser, signupUser } = useHttp()
     const [usuario, setUsuario] = useState<{ email: string, pass: string, pass2: string }>({ email: '', pass: '', pass2: '' })
 
     const inputChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -31,8 +34,7 @@ const Login = () => {
 
         toast.info('verificando datos')
 
-        console.log(usuario)
-
+        loginUser(usuario)
     }
 
     const logonHandler = (event: FormEvent<HTMLFormElement>) => {
@@ -48,7 +50,7 @@ const Login = () => {
 
         toast.info('verificando datos')
 
-        console.log(usuario)
+        signupUser(usuario)
     }
 
     return (
