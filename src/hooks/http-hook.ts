@@ -1,4 +1,4 @@
-const baseUrl = proces.meta.env.BASE_URL
+const baseUrl = import.meta.env.BASE_URL
 
 const useHttp = () => {
     const signupUser = async (usuario) => {
