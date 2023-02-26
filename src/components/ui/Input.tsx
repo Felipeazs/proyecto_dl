@@ -1,4 +1,4 @@
-import React, { FormEvent } from 'react'
+import React, { ChangeEvent } from 'react'
 
 import styles from './Input.module.css'
 
@@ -8,7 +8,7 @@ interface InputProps {
     name?: string
     value?: string
     placeholder: string
-    onInputChange: (event: FormEvent<HTMLInputElement>) => void
+    onInputChange: (event: ChangeEvent<HTMLInputElement>) => void
     className?: string
 }
 
