@@ -1,0 +1,15 @@
+.button2 {
+    color: #ffffff;
+    background-color: #007b00;
+    border-radius: 10px;
+    padding: 2.5rem;
+    border: 2px solid slategrey;
+    font-weight: bold;
+}
+
+.button2:hover{
+    cursor: pointer;
+    border: 2px solid slategrey;
+    background-color: #ffffff;
+    color: #000000;
+}

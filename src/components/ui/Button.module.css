@@ -1,0 +1,16 @@
+.button button {
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    border: none;
+    border: 2px solid slategrey;
+    background-color: white;
+    font-weight:bold;
+    font-size: 1.2rem;
+}
+
+.button button:hover{
+    cursor: pointer;
+    border: 2px solid black;
+    background-color: #007b00;
+    color: #ffffff;
+}

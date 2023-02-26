@@ -1,0 +1,15 @@
+.input3 {
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    gap: 20px;
+    color: #000000;
+    font-size: 1.5em;
+}
+.input3 input {
+    width: 50%;
+    font-size: 1em;
+    border-radius: 5px;
+    border: 1px solid black;
+    padding: 1%;
+}

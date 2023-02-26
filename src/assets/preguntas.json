@@ -1,0 +1,193 @@
+{
+    "1": {
+        "id": "1",
+        "pregunta": "Escribe el proyecto o identificación de tu proyecto. Así podrás tener la información para su consulta posterior.",
+        "opciones": [
+            "Proyecto",
+            "Emprendimiento (estás ... de tu modelo de negocio)",
+            "Empresa (ya validaste y estás ... ...)",
+            "Otro"
+        ]
+    },
+    "2": {
+        "id": "2",
+        "pregunta": "¿Qué es lo que quieres lograr a través de tu proyecto?",
+        "opciones": [
+            "Ofrecer un servicio",
+            "Elaborar un producto",
+            "Otro"
+        ]
+    },
+    "3": {
+        "id": "3",
+        "pregunta": "¿En cuál rubro impacta el proyecto?",
+        "opciones": [
+            "Biotecnología",
+            "Alimentos y bebidas no alchólicas",
+            "Bebidas alcohólicas",
+            "Tecnologías de la información",
+            "Transporte y logística",
+            "Educación",
+            "Otro"
+        ]
+    },
+    "4": {
+        "id": "4",
+        "pregunta": "¿En qué región impacta la actividad principal?",
+        "opciones": [
+            "De alcance nacional",
+            "De alcance regional Latam",
+            "De alcance mundial"
+        ]
+    },
+    "5": {
+        "id": "5",
+        "pregunta": "Selecciona cuál(es) de los siguiente(s) principios de la economía circular está considerado en la actividad del proyecto",
+        "opciones": [
+            "Uso compartido",
+            "Extensión de la vida útil / Servicio de soporte: el proyecto permite que el usuario final tenga opciones de ",
+            "Reuso / Redistribución / Resignificado: el proyecto permite que un material pueda ser utilizado más de una vez sin necesidad de transformación",
+            "Remanufactura / Reacondicionamiento: el proyecto peromite que a un producto/componente se le devuelva a un estado de calidad equivalente o superior al original",
+            "Reciclaje cerrado o interno: el proyecto considera el reciclaje de un material dentro de los límites de la empresa",
+            "Reciclaje abierto / en cascada",
+            "No lo sabemos"
+        ],
+        "info": [
+            "El proyecto involucra materiales o consumos entre una o más empresas",
+            "El proyecto permite que uno o más matriales estén más tiempo de uso",
+            "El proyecto permite que el usuario final tenga opciones de...",
+            "El proyecto permite que un material pueda ser utilizado más de una vez sin necesidad de transformación",
+            "El proyecto permite que uno o más materiales, equipos sean utilizados en una o más empresas durante todo su tiempo de uso",
+            "El proyecto permite que a un producto/componente se le devuelva a un estado de calidad equivalente o superior al original",
+            "El proyecto permite la revisión y eventual reparación de productos usados para hacer posible que sean usados nuevamente",
+            "El proyecto considera el reciclaje de un material dentro de los límites de la empresa",
+            "El proyecto considera el reciclaje de un material con participación de terceros, en uno o más procesos seriales"
+        ]
+    },
+    "6": {
+        "id": "6",
+        "pregunta": "Selecciona cuál(es) de los siguiente(s) ámbito(s) de la economía circular está considerado en la actividad del proyecto",
+        "opciones": [
+            "Pensamiento sistémico",
+            "Innovación",
+            "Gobernanza",
+            "Colaboración",
+            "Optimización de valor",
+            "Transparencia",
+            "No lo sabemos"
+        ]
+    },
+    "7": {
+        "id": "7",
+        "pregunta": "Qué haces cuando empiezas un nuevo proyecto? Selecciona todas las alternativas que reflejen tu realidad",
+        "opciones": [
+            "Realizamos un diagnóstico de cómo la EC puede afectar al proyecto",
+            "Realizamos un mapa de los stakeholders que se verían afectados por el proyecto",
+            "Generamos conciencia interna en el equipo de trabajo sobre el objetivo del proyecto y su relevancia para el desarrollo de la empresa",
+            "Ninguno"
+        ]
+    },
+    "8": {
+        "id": "8",
+        "pregunta": "Cuando ya tienes definido los alcances del proyecto y cómo el equipo de trabajo se va a involucrar, ¿Cuál o cuáles son las siguientes actividades que realizaría tu organización?",
+        "opciones": [
+            "Se identifican los sistemas que son impactados por el proyecto (comunidad, proveedores, etc.)",
+            "Revisamos que el proyecto integre los pilares de la economía circular",
+            "Revisamos que el proyecto se encuentre alineado con las políticas de sostenibilidad de la empresa según",
+            "Ninguno"
+        ]
+    },
+    "9": {
+        "id": "9",
+        "pregunta": "Cuando defines el plan de trabajo del proyecto, ¿Cuál o cuáles son las siguientes actividades que realizaría tu organización?",
+        "opciones": [
+            "Se analizan los objetivos del proyecto según su relación con la economía circular",
+            "Para cumplir los objetivos se realiza una lluvia de ideas y se identifican opciones que permitan cumplir con los objetivos",
+            "Ninguno"
+        ]
+    },
+    "10": {
+        "id": "10",
+        "pregunta": "Cuando tienes una lista de opciones para cumplir con los objetivos del proyecto, ¿Qué es lo que hace tu organización para priorizarlas?",
+        "opciones": [
+            "Tenemos una lista de chequeo para revisar cada opción de acuerdo al cumplimiento con los pilares de la economía circular",
+            "Cada opción evaluada es priorizada en base a criterios que están en línea con las políticas de sostenibilidad o sistema de gestión de la empresa",
+            "Ninguno"
+        ]
+    },
+    "11": {
+        "id": "11",
+        "pregunta": "Ahora que ya tienes definida una lista de opciones para llevar a cabo el proyecto ¿Cuál de los siguientes aspectos globales evalúa tu organización para cada una?",
+        "opciones": [
+            "Qué: Hemos identificado el producto o servicio a ofrecer",
+            "Quién: Hemos identificado el mercado y los grupos de interés del producto o servicio ofrecido",
+            "Cómo: Hemos definido los procesos y actividades, junto con los recursos necesarios para construir y distribuir los productos y/o servicios ofrecidos",
+            "Cuándo: Hemos evaluado el tiempo necesario para el desarrollo e implementación del proyecto",
+            "Ninguno"
+        ]
+    },
+    "12": {
+        "id": "12",
+        "pregunta": "¿Y cuáles de los siguientes aspectos específicos se evalúan para cada una?",
+        "opciones": [
+            "Análisis de mercado",
+            "Viaje del cliente",
+            "Operaciones",
+            "Tecnologías de la información",
+            "Logística y cadena de valor",
+            "Información financiera",
+            "Métricas y generación de valor",
+            "Regulaciones y normativas",
+            "Parámetros financieros",
+            "Ninguno"
+        ]
+    },
+    "13": {
+        "id": "13",
+        "pregunta": "Teniendo ya el objetivo del proyecto y la mejor forma de abordarlo, ¿Cuáles son los siguientes pasos que realizaría tu organización?",
+        "opciones": [
+            "Establecer una gobernanza y responsabilidad para la implementación de un piloto o prototipo",
+            "Definir un plan de trabajo para la implementación de un piloto o prototipo",
+            "Revisar los resultados derivados de la implementación del piloto o prototipo",
+            "Ninguno"
+        ]
+    },
+    "14": {
+        "id": "14",
+        "pregunta": "Una vez que ya tienen los primeros resultados de la validación de un piloto, ¿Cuáles son los pasos que sigue tu organización?",
+        "opciones": [
+            "Desarrollar y ejecutar un plan de implementación del prototipo validado",
+            "Asegurar mecanismos (recursos económicos, capacidades, etc.) que aseguren el progreso de la implementación",
+            "Ninguno"
+        ]
+    },
+    "15": {
+        "id": "15",
+        "pregunta": "Luego de la implementación del proyecto y basados en los resultados obtenidos de la etapa previa de pilotaje o prototipaje, ¿Cuáles son los siguientes aspectos que se monitorearían en tu organización?",
+        "opciones": [
+            "Éxito",
+            "Experiencia",
+            "Pérdidas",
+            "Fallas",
+            "Ejercicios",
+            "Aprendizaje",
+            "Ninguno"
+        ]
+    },
+    "16": {
+        "id": "16",
+        "pregunta": "¿Se reportaría la información obtenida?",
+        "opciones": [
+            "Sí",
+            "No"
+        ]
+    },
+    "17": {
+        "id": "17",
+        "pregunta": "¿Se verificaría en un proceso de transfromación...?",
+        "opciones": [
+            "Sí",
+            "No"
+        ]
+    }
+}

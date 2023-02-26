@@ -1,0 +1,27 @@
+.radio {
+    text-align: start;
+    color: #000000;
+    font-size: 1.2em;
+}
+.radio_inputs {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 5px;
+    color: #000000;
+}
+
+.radio_inputs input[type="radio"] {
+    background-color: #ffffff;
+    color: #000000;
+    width: 0.5em;
+    height: 0.5em;
+    border: 0.15em solid currentColor;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 3rem;
+    transform: translateY(-0.075em);
+}
+.radio_inputs label {
+    line-height: 2.0em;
+}
