@@ -1,6 +1,6 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react'
 
-import useHttp from '../hooks/http-hook'
+import useHttp from '../hooks/httpClient-hook'
 
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
