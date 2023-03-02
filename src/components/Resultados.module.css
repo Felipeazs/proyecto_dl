@@ -1,5 +1,7 @@
 .tabs {
     display: flex;
+    flex-direction: column;
+    width: 50%;
     margin: 0%;
     font-weight: 500;
 }
@@ -7,22 +9,31 @@ ul {
     padding: 0%;
 }
 .tabs li {
-    border: 1px solid teal;
+    border: 1px solid #82bb85;
     border-bottom: none;
     border-radius: 5px;
     padding: 0% 5%;
 }
 .tabs li:hover {
-    background-color: #007b00;
+    background-color: #82bb85;
     color: white;
     cursor: pointer;
 }
 .contenido {
-    width: 75%;
+    width: 90%;
     border-radius: 5px;
-    border: 1px solid teal;
+    white-space: nowrap;
+    border: 1px solid #82bb85;
     padding: 3%;
-    overflow-y: auto;
+    overflow: auto;
     max-height: 50vh;
 }
 
+@media (min-width: 930px) {
+    .contenido {
+        width: 75%;
+    }
+    .tabs {
+        flex-direction: row;
+    }
+}

@@ -8,6 +8,12 @@
 h1 {
     line-height: 45px;
 }
+.header .hero {
+    margin: 1% 15%;
+}
+.article {
+    padding: 5% 0%;
+}
 .numeros {
     display: flex;
     flex-direction: row;
@@ -22,7 +28,7 @@ h1 {
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
-    background-color: #000000;
+    background-color: #738290;
     border-radius: 50%;
     min-width: 60px;
     height: 60px;
@@ -30,7 +36,11 @@ h1 {
     font-size:2rem;
     font-weight: bold;
     color: #ffffff;
+    box-shadow: -1px 3px 31px 0px rgba(0, 0, 0, 0.17);
+    -webkit-box-shadow: -1px 3px 31px 0px rgba(0, 0, 0, 0.17);
+    -moz-box-shadow: -1px 3px 31px 0px rgba(0, 0, 0, 0.17);
 }
+
 .principios {
     display: flex;
     flex-direction: row;

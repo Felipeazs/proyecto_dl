@@ -7,6 +7,7 @@
     color: #000000;
     font-size: 1.2rem;
 }
+
 .datos {
     display: flex;
     flex-direction: column;
@@ -14,9 +15,11 @@
     align-items: center;
     width: 350px;
     gap: 20px;
-    border: 1px solid #CACDD1;
     border-radius: 5px;
     padding: 2% 5%;
+    box-shadow: -1px 3px 31px 0px rgba(0, 0, 0, 0.17);
+    -webkit-box-shadow: -1px 3px 31px 0px rgba(0, 0, 0, 0.17);
+    -moz-box-shadow: -1px 3px 31px 0px rgba(0, 0, 0, 0.17);
 }
 @media (min-width: 930px) {
     .login {

@@ -15,10 +15,11 @@
     -webkit-text-size-adjust: 100%;
 }
 a {
+    font-size: 1.2rem;
     font-weight: 500;
     text-decoration: inherit;
 }
 a:hover {
     cursor: pointer;
-    text-decoration-line: underline;
+    text-decoration-line: none;
 }

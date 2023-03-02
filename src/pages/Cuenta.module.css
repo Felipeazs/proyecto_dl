@@ -5,9 +5,23 @@
     line-height: 2rem;
 }
 .cuenta .panel_lateral {
-    width: 20%;
+    width: 30%;
     text-align: end;
 }
 .cuenta .panel_principal {
-    width: 80%;
+    width: 70%;
+}
+.panel_lateral hr {
+    width: 100%;
+    border-top: 1px solid #DDD;
+}
+.panel_lateral li:hover {
+    background-color: #82BB85;
+    color: #ffffff;
+}
+
+@media (min-width: 930px) {
+    .cuenta .panel_lateral {
+        width: 20%;
+    }
 }

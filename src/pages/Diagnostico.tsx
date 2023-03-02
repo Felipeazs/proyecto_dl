@@ -48,6 +48,18 @@ const Diagnostico = () => {
 
     const size = useWindowSize()
 
+    const inputHandler = (event: ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = event.target
+        setRespuestas((prevState) => {
+            return {
+                ...prevState,
+                [name]: value,
+            }
+        })
+
+        console.log(respuestas)
+    }
+
     const radioHandler = (event: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target
         setRespuestas((prevState) => {
@@ -56,6 +68,8 @@ const Diagnostico = () => {
                 [name]: value,
             }
         })
+
+        console.log(respuestas)
     }
 
     const p5Handler = (event: ChangeEvent<HTMLInputElement>) => {
@@ -556,6 +570,7 @@ const Diagnostico = () => {
 
         const porcentaje = ((puntajeTotal / 36) * 100).toFixed(0)
         setPorcentajeTotal(+porcentaje)
+        console.log('respuesta:', respuestas)
         console.log('item:', isItem)
         console.log('puntaje:', puntajeTotal)
 
@@ -614,11 +629,9 @@ const Diagnostico = () => {
 
         setPorcentajeTotal(+((puntajeTotal / 36) * 100).toFixed(0))
 
-        console.log(respuestas)
-        console.log(puntajeTotal)
+        //TODO: Guardar resultados en la base de datos
     }
 
-    const inputHandler = () => { }
 
     return (
         <div className={`${styles.diagnostico} container`}>

@@ -2,15 +2,14 @@
     padding: 0.5rem 1rem;
     border-radius: 10px;
     border: none;
-    border: 2px solid #CACDD1;
-    background-color: white;
-    font-weight:bold;
-    font-size: 1.2rem;
+    border: 2px solid transparent;
+    background-color: #80DA83;
+    font-size: 1rem;
     transition: .35s;
 }
 
 .button button:hover{
     cursor: pointer;
-    background-color: #007b00;
-    color: #ffffff;
+    background-color: #ffffff;
+    border: 2px solid #DDD;
 }

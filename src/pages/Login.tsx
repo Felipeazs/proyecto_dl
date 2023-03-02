@@ -57,15 +57,15 @@ const Login = () => {
         <div className={`${styles.login} container`}>
             <ToastContainer />
             <form onSubmit={loginHandler} className={styles.datos}>
-                <p>Ingresa a tu cuenta</p>
-                <Input type='text' name='email' label='usuario' placeholder='Ingresa tu email' onInputChange={inputChange} />
-                <Input type='password' name='pass' label='contraseña' placeholder='Ingresa tu contraseña' onInputChange={inputChange} />
+                <h2>Ingresa a tu cuenta</h2>
+                <Input type='text' name='email' label='Usuario' placeholder='Ingresa tu email' onInputChange={inputChange} />
+                <Input type='password' name='pass' label='Contraseña' placeholder='Ingresa tu contraseña' onInputChange={inputChange} />
                 <Button type="submit" title="Ingresar" />
             </form>
             <form onSubmit={logonHandler} className={styles.datos}>
-                <p>Regístrate</p>
-                <Input type='text' label='usuario' name='email' placeholder='Ingresa tu email' onInputChange={inputChange} />
-                <Input type='password' name='pass' label='contraseña' placeholder='Ingresa tu contraseña' onInputChange={inputChange} />
+                <h2>Regístrate</h2>
+                <Input type='text' label='Usuario' name='email' placeholder='Ingresa tu email' onInputChange={inputChange} />
+                <Input type='password' name='pass' label='Contraseña' placeholder='Ingresa tu contraseña' onInputChange={inputChange} />
                 <Input type='password' name='pass2' label='' placeholder='Repite tu contraseña' onInputChange={inputChange} />
                 <Button type="submit" title="Registrar" />
             </form>

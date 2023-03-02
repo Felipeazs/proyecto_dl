@@ -37,6 +37,7 @@ const Cuenta = () => {
                             Datos personales
                         </a>
                     </li>
+                    <hr />
                     <li>
                         <a type='button'
                             onClick={() => {
@@ -44,6 +45,7 @@ const Cuenta = () => {
                             }}
                         >Diagnósticos</a>
                     </li>
+                    <hr />
                 </ul>
             </div>
             <div className='divisor_vertical'></div>

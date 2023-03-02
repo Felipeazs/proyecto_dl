@@ -17,7 +17,7 @@ body {
 }
 .container_2 {
     margin-top: 3rem;
-    padding: 6rem 5rem;
+    padding: 6rem 1rem;
 }
 ul {
     list-style: none;
@@ -27,13 +27,16 @@ ul {
 }
 
 .pregunta {
-    font-size: 1.15em;
+    font-size: 1em;
     line-height: 1.25em;
 }
 
 @media (min-width: 700px) {
     .container {
         padding: 6rem 4rem;
+    }
+    .container_2 {
+        padding: 6rem 5rem;
     }
 }
 @media (min-width: 1000px) {
@@ -48,7 +51,7 @@ ul {
 }
 
 .divisor_vertical {
-    background-color: slategrey;
+    background-color: #ddd;
     width: 1px;
     height: 80vh;
     margin: 0 5%;
