@@ -6,6 +6,7 @@
 }
 .cuenta .panel_lateral {
     width: 20%;
+    text-align: end;
 }
 .cuenta .panel_principal {
     width: 80%;

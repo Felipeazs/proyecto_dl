@@ -64,11 +64,11 @@
     .nav .drawer {
         display: none;
     }
-    .nav button{
+    .nav button {
         display: none;
     }
     .links {
-        display:flex;
+        display: flex;
         gap: 30px;
     }
 }

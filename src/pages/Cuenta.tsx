@@ -42,11 +42,8 @@ const Cuenta = () => {
                             onClick={() => {
                                 clickHandler('resultados')
                             }}
-                        >Resultados diagnósticos</a>
+                        >Diagnósticos</a>
                     </li>
-                    <li>3</li>
-                    <li>4</li>
-                    <li>5</li>
                 </ul>
             </div>
             <div className='divisor_vertical'></div>

@@ -5,11 +5,12 @@
     padding: 2.5rem;
     border: 2px solid slategrey;
     font-weight: bold;
+    transition: .35s;
 }
 
 .button2:hover{
     cursor: pointer;
-    border: 2px solid slategrey;
+    border: 2px solid #CACDD1;
     background-color: #ffffff;
     color: #000000;
 }

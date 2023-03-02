@@ -13,13 +13,16 @@ ul {
     padding: 0% 5%;
 }
 .tabs li:hover {
-    background-color: #007B00;
+    background-color: #007b00;
     color: white;
     cursor: pointer;
 }
 .contenido {
+    width: 75%;
     border-radius: 5px;
     border: 1px solid teal;
-    height: 50vh;
     padding: 3%;
+    overflow-y: auto;
+    max-height: 50vh;
 }
+

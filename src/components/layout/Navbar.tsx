@@ -43,6 +43,20 @@ const Navbar = () => {
                                 onClick={toggleDrawer}
                             >Inicio</NavLink>
                         </li>
+                        <li>
+                            <NavLink
+                                to='/login'
+                                className={({ isActive }) => isActive ? 'activeLink' : undefined}
+                                onClick={toggleDrawer}
+                            >Login</NavLink>
+                        </li>
+                        <li>
+                            <NavLink
+                                to='/cuenta'
+                                className={({ isActive }) => isActive ? 'activeLink' : undefined}
+                                onClick={toggleDrawer}
+                            >Cuenta</NavLink>
+                        </li>
                     </ul>
                 </Drawer>
                 <ul className={styles.links}>
