@@ -6,7 +6,7 @@
 .checkbox_inputs {
     display: flex;
     justify-content: flex-start;
-    align-items: center;
+    align-items: baseline;
     gap: 5px;
     color: #000000;
 }

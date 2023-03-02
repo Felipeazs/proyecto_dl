@@ -556,6 +556,7 @@ const Diagnostico = () => {
 
         const porcentaje = ((puntajeTotal / 36) * 100).toFixed(0)
         setPorcentajeTotal(+porcentaje)
+        console.log('item:', isItem)
         console.log('puntaje:', puntajeTotal)
 
         if (operador === 'sumar') {

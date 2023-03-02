@@ -53,13 +53,16 @@ const Navbar = () => {
                         >Inicio</NavLink>
                     </li>
                     <li>
-                        <a href='#contacto'>Contacto</a>
-                    </li>
-                    <li>
                         <NavLink
                             to='/login'
                             className={({ isActive }) => isActive ? 'activeLink' : undefined}
                         >Login</NavLink>
+                    </li>
+                    <li>
+                        <NavLink
+                            to='/cuenta/:id'
+                            className={({ isActive }) => isActive ? 'activeLink' : undefined}
+                        >Cuenta</NavLink>
                     </li>
                 </ul>
                 <button onClick={toggleDrawer}>

@@ -16,7 +16,7 @@ const Checkbox = ({ pregunta, opciones, id, isChecked, onChange }: CheckboxPros)
             <p className='pregunta'>{`${id}.- ${pregunta}`}</p>
             {opciones.map((o, i) => (
                 <div className={styles.checkbox_inputs} key={i}>
-                    <input type='checkbox' id={`${id}-${o}`} name={id} value={o} onChange={onChange} checked={isChecked[i]} />
+                    <input type='checkbox' id={`${id}-${o}`} name={id} value={o} onChange={onChange} checked={isChecked[i]} className={styles.chkinput} />
                     <label htmlFor={`${id}-${o}`}>{o}</label>
                 </div>
             ))}

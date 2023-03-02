@@ -45,10 +45,10 @@
         "pregunta": "Selecciona cuál(es) de los siguiente(s) principios de la economía circular está considerado en la actividad del proyecto",
         "opciones": [
             "Uso compartido",
-            "Extensión de la vida útil / Servicio de soporte: el proyecto permite que el usuario final tenga opciones de ",
-            "Reuso / Redistribución / Resignificado: el proyecto permite que un material pueda ser utilizado más de una vez sin necesidad de transformación",
-            "Remanufactura / Reacondicionamiento: el proyecto peromite que a un producto/componente se le devuelva a un estado de calidad equivalente o superior al original",
-            "Reciclaje cerrado o interno: el proyecto considera el reciclaje de un material dentro de los límites de la empresa",
+            "Extensión de la vida útil / Servicio de soporte",
+            "Reuso / Redistribución / Resignificado",
+            "Remanufactura / Reacondicionamiento",
+            "Reciclaje cerrado o interno",
             "Reciclaje abierto / en cascada",
             "No lo sabemos"
         ],

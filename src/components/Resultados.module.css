@@ -1,0 +1,25 @@
+.tabs {
+    display: flex;
+    margin: 0%;
+    font-weight: 500;
+}
+ul {
+    padding: 0%;
+}
+.tabs li {
+    border: 1px solid teal;
+    border-bottom: none;
+    border-radius: 5px;
+    padding: 0% 5%;
+}
+.tabs li:hover {
+    background-color: #007B00;
+    color: white;
+    cursor: pointer;
+}
+.contenido {
+    border-radius: 5px;
+    border: 1px solid teal;
+    height: 50vh;
+    padding: 3%;
+}

@@ -1,0 +1,12 @@
+.cuenta {
+    display: flex;
+    flex-direction: row;
+    text-align: start;
+    line-height: 2rem;
+}
+.cuenta .panel_lateral {
+    width: 20%;
+}
+.cuenta .panel_principal {
+    width: 80%;
+}
