@@ -1,29 +1,77 @@
-const baseUrl = import.meta.env.BASE_URL
+const baseUrl = import.meta.env.VITE_BASE_URL
+
+interface DataTypes {
+    _id: string
+    puntajeTotal: number
+    porcentajeTotal: number
+    createdAt: Date
+}
 
 const useHttp = () => {
-    const signupUser = async (usuario: { email: string, pass: string }) => {
-        return fetch(`${baseUrl}/api/usuarios/signup`, {
+    const getUser = async (id: string, token: string) => {
+        return fetch(`${baseUrl}/api/usuario/${id}`, {
+            method: 'GET',
+            headers: { 'Authorization': `Bearer ${token}` },
+        })
+            .then((res) => res.json())
+            .then((data) => data)
+            .catch((err) => console.log(err))
+    }
+    const signupUser = async (usuario: { email: string; password: string; password2: string }) => {
+        return fetch(`${baseUrl}/api/signup`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(usuario),
         })
             .then((res) => res.json())
             .then((data) => data)
+            .catch((err) => console.log(err))
+    }
+    const loginUser = async (usuario: { email: string; password: string }) => {
+        return fetch(`${baseUrl}/api/login`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(usuario),
+        })
+            .then((res) => res.json())
+            .then((data) => data)
+            .catch((err) => console.log(err))
+    }
+    const postDiagnostico = async (usuarioId: string, token: string, diagnostico: any) => {
+        return fetch(`${baseUrl}/api/usuario/${usuarioId}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify(diagnostico),
+        })
+            .then(res => res.json())
+            .then(data => data)
+            .catch((err) => console.log(err))
     }
 
-    const loginUser = async (usuario: { email: string, pass: string }) => {
-        return fetch(`${baseUrl}/api/usuarios/login`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(usuario),
+
+    const getDiagnosticos = async (usuarioId: string, token: string): Promise<{ diagnostico_encontrado: DataTypes[] }> => {
+        return fetch(`${baseUrl}/api/usuario/${usuarioId}/diagnosticos`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
         })
             .then((res) => res.json())
             .then((data) => data)
+            .catch((err) => console.log(err))
+
     }
 
     return {
         signupUser,
         loginUser,
+        getUser,
+        postDiagnostico,
+        getDiagnosticos
     }
 }
 

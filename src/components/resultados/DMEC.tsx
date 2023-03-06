@@ -6,7 +6,17 @@ import styles from './DMEC.module.css'
 import { Tooltip } from 'react-tooltip'
 import 'react-tooltip/dist/react-tooltip.css'
 
-const DMEC = () => {
+interface DataTypes {
+    _id: string
+    puntajeTotal: number
+    porcentajeTotal: number
+    createdAt: Date
+}
+
+const DMEC = (data) => {
+
+    console.log(data)
+
     return (
         <div className={styles.dmec}>
             <Tooltip id="nm" />
@@ -16,7 +26,7 @@ const DMEC = () => {
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>nombre</th>
+                        <th>id</th>
                         <th>puntaje</th>
                         <th data-tooltip-id="pa" data-tooltip-content="Porcentaje de avance" data-tooltil-place="top">% (*)</th>
                         <th data-tooltip-id="nm" data-tooltip-content="Nivel de madurez" data-tooltil-place="top">NM (*)</th>
@@ -24,254 +34,16 @@ const DMEC = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td><Link to="/resultados/:id">análisis de madurez en economía circular</Link></td>
-                        <td>56</td>
-                        <td>82</td>
-                        <td>8</td>
-                        <td>22/02/2023</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td><Link to="/resultados/:id">análisis de madurez en economía circular</Link></td>
-                        <td>56</td>
-                        <td>82</td>
-                        <td>8</td>
-                        <td>22/02/2023</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td><Link to="/resultados/:id">análisis de madurez en economía circular</Link></td>
-                        <td>56</td>
-                        <td>82</td>
-                        <td>8</td>
-                        <td>22/02/2023</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td><Link to="/resultados/:id">análisis de madurez en economía circular</Link></td>
-                        <td>56</td>
-                        <td>82</td>
-                        <td>8</td>
-                        <td>22/02/2023</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td><Link to="/resultados/:id">análisis de madurez en economía circular</Link></td>
-                        <td>56</td>
-                        <td>82</td>
-                        <td>8</td>
-                        <td>22/02/2023</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td><Link to="/resultados/:id">análisis de madurez en economía circular</Link></td>
-                        <td>56</td>
-                        <td>82</td>
-                        <td>8</td>
-                        <td>22/02/2023</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td><Link to="/resultados/:id">análisis de madurez en economía circular</Link></td>
-                        <td>56</td>
-                        <td>82</td>
-                        <td>8</td>
-                        <td>22/02/2023</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td><Link to="/resultados/:id">análisis de madurez en economía circular</Link></td>
-                        <td>56</td>
-                        <td>82</td>
-                        <td>8</td>
-                        <td>22/02/2023</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td><Link to="/resultados/:id">análisis de madurez en economía circular</Link></td>
-                        <td>56</td>
-                        <td>82</td>
-                        <td>8</td>
-                        <td>22/02/2023</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td><Link to="/resultados/:id">análisis de madurez en economía circular</Link></td>
-                        <td>56</td>
-                        <td>82</td>
-                        <td>8</td>
-                        <td>22/02/2023</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td><Link to="/resultados/:id">análisis de madurez en economía circular</Link></td>
-                        <td>56</td>
-                        <td>82</td>
-                        <td>8</td>
-                        <td>22/02/2023</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td><Link to="/resultados/:id">análisis de madurez en economía circular</Link></td>
-                        <td>56</td>
-                        <td>82</td>
-                        <td>8</td>
-                        <td>22/02/2023</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td><Link to="/resultados/:id">análisis de madurez en economía circular</Link></td>
-                        <td>56</td>
-                        <td>82</td>
-                        <td>8</td>
-                        <td>22/02/2023</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td><Link to="/resultados/:id">análisis de madurez en economía circular</Link></td>
-                        <td>56</td>
-                        <td>82</td>
-                        <td>8</td>
-                        <td>22/02/2023</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td><Link to="/resultados/:id">análisis de madurez en economía circular</Link></td>
-                        <td>56</td>
-                        <td>82</td>
-                        <td>8</td>
-                        <td>22/02/2023</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td><Link to="/resultados/:id">análisis de madurez en economía circular</Link></td>
-                        <td>56</td>
-                        <td>82</td>
-                        <td>8</td>
-                        <td>22/02/2023</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td><Link to="/resultados/:id">análisis de madurez en economía circular</Link></td>
-                        <td>56</td>
-                        <td>82</td>
-                        <td>8</td>
-                        <td>22/02/2023</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td><Link to="/resultados/:id">análisis de madurez en economía circular</Link></td>
-                        <td>56</td>
-                        <td>82</td>
-                        <td>8</td>
-                        <td>22/02/2023</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td><Link to="/resultados/:id">análisis de madurez en economía circular</Link></td>
-                        <td>56</td>
-                        <td>82</td>
-                        <td>8</td>
-                        <td>22/02/2023</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td><Link to="/resultados/:id">análisis de madurez en economía circular</Link></td>
-                        <td>56</td>
-                        <td>82</td>
-                        <td>8</td>
-                        <td>22/02/2023</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td><Link to="/resultados/:id">análisis de madurez en economía circular</Link></td>
-                        <td>56</td>
-                        <td>82</td>
-                        <td>8</td>
-                        <td>22/02/2023</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td><Link to="/resultados/:id">análisis de madurez en economía circular</Link></td>
-                        <td>56</td>
-                        <td>82</td>
-                        <td>8</td>
-                        <td>22/02/2023</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td><Link to="/resultados/:id">análisis de madurez en economía circular</Link></td>
-                        <td>56</td>
-                        <td>82</td>
-                        <td>8</td>
-                        <td>22/02/2023</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td><Link to="/resultados/:id">análisis de madurez en economía circular</Link></td>
-                        <td>56</td>
-                        <td>82</td>
-                        <td>8</td>
-                        <td>22/02/2023</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td><Link to="/resultados/:id">análisis de madurez en economía circular</Link></td>
-                        <td>56</td>
-                        <td>82</td>
-                        <td>8</td>
-                        <td>22/02/2023</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td><Link to="/resultados/:id">análisis de madurez en economía circular</Link></td>
-                        <td>56</td>
-                        <td>82</td>
-                        <td>8</td>
-                        <td>22/02/2023</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td><Link to="/resultados/:id">análisis de madurez en economía circular</Link></td>
-                        <td>56</td>
-                        <td>82</td>
-                        <td>8</td>
-                        <td>22/02/2023</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td><Link to="/resultados/:id">análisis de madurez en economía circular</Link></td>
-                        <td>56</td>
-                        <td>82</td>
-                        <td>8</td>
-                        <td>22/02/2023</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td><Link to="/resultados/:id">análisis de madurez en economía circular</Link></td>
-                        <td>56</td>
-                        <td>82</td>
-                        <td>8</td>
-                        <td>22/02/2023</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td><Link to="/resultados/:id">análisis de madurez en economía circular</Link></td>
-                        <td>56</td>
-                        <td>82</td>
-                        <td>8</td>
-                        <td>22/02/2023</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td><Link to="/resultados/:id">análisis de madurez en economía circular</Link></td>
-                        <td>56</td>
-                        <td>82</td>
-                        <td>8</td>
-                        <td>22/02/2023</td>
-                    </tr>
+                    {data.map((d, i) =>
+                        <tr key={i}>
+                            <td>{i + 1}</td>
+                            <td><Link to="/resultados/:id">{d._id}</Link></td>
+                            <td>{d.puntajeTotal}</td>
+                            <td>{`${d.porcentajeTotal}%`}</td>
+                            <td>8</td>
+                            <td>{new Date(d.createdAt).toLocaleDateString()}</td>
+                        </tr>
+                    )}
                 </tbody>
             </table>
         </div>

@@ -1,4 +1,9 @@
-import React, { useState, useEffect, FormEvent, ChangeEvent } from 'react'
+import React, { useState, useEffect, useContext, useRef, FormEvent, ChangeEvent, MutableRefObject } from 'react'
+import { useNavigate } from 'react-router-dom'
+import useWindowSize from '../utils/Windows'
+
+import UsuarioContext from '../context/user-context'
+import useHttp from '../hooks/httpClient-hook'
 
 import Input3 from '../components/ui/Input3'
 import Radio from '../components/ui/Radio'
@@ -9,9 +14,13 @@ import styles from './Diagnostico.module.css'
 import Confetti from 'react-confetti'
 
 import data from '../assets/preguntas.json'
-import resultados from '../assets/resultados.json'
+import mensajes from '../assets/resultados.json'
 
 const Diagnostico = () => {
+    const formRef = useRef<HTMLFormElement>(null)
+    const navigate = useNavigate()
+    const { postDiagnostico } = useHttp()
+    const { isLoggedIn, userId, token } = useContext(UsuarioContext)
     const [isItem, setIsItem] = useState(1)
     const [titulo, setTitulo] = useState('')
     const [prevItem, setPrevItem] = useState(0)
@@ -48,6 +57,12 @@ const Diagnostico = () => {
 
     const size = useWindowSize()
 
+    useEffect(() => {
+        if (!isLoggedIn) {
+            navigate('/login')
+        }
+    }, [])
+
     const inputHandler = (event: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target
         setRespuestas((prevState) => {
@@ -56,8 +71,6 @@ const Diagnostico = () => {
                 [name]: value,
             }
         })
-
-        console.log(respuestas)
     }
 
     const radioHandler = (event: ChangeEvent<HTMLInputElement>) => {
@@ -68,8 +81,6 @@ const Diagnostico = () => {
                 [name]: value,
             }
         })
-
-        console.log(respuestas)
     }
 
     const p5Handler = (event: ChangeEvent<HTMLInputElement>) => {
@@ -81,17 +92,19 @@ const Diagnostico = () => {
         updateCheckState[updateCheckState.length - 1] = false
         setIsP5Checked(updateCheckState)
 
+        let p: string[]
         if (checked) {
-            setP5([...p5, value])
+            p = [...p5, value]
+            setP5(p)
         } else {
-            const p = p5.filter((p) => p !== value)
-            setP5([...p])
+            p = p5.filter((p) => p !== value)
+            setP5(p)
         }
 
         setRespuestas((prevState) => {
             return {
                 ...prevState,
-                [name]: p5,
+                [name]: p,
             }
         })
 
@@ -116,17 +129,19 @@ const Diagnostico = () => {
         updateCheckState[updateCheckState.length - 1] = false
         setIsP6Checked(updateCheckState)
 
+        let p: string[]
         if (checked) {
-            setP6([...p6, value])
+            p = [...p6, value]
+            setP6(p)
         } else {
-            const p = p6.filter((p) => p !== value)
-            setP6([...p])
+            p = p6.filter((p) => p !== value)
+            setP6(p)
         }
 
         setRespuestas((prevState) => {
             return {
                 ...prevState,
-                [name]: p6,
+                [name]: p,
             }
         })
 
@@ -151,19 +166,21 @@ const Diagnostico = () => {
         updateCheckState[updateCheckState.length - 1] = false
         setIsP7Checked(updateCheckState)
 
+        let p: string[]
         if (checked) {
-            setP7([...p7, value])
+            p = [...p7, value]
+            setP7(p)
             setPuntajeTotal(puntajeTotal + 1)
         } else {
-            const p = p7.filter((p) => p !== value)
-            setP7([...p])
+            p = p7.filter((p) => p !== value)
+            setP7(p)
             setPuntajeTotal(puntajeTotal - 1)
         }
 
         setRespuestas((prevState) => {
             return {
                 ...prevState,
-                [name]: p7,
+                [name]: p,
             }
         })
 
@@ -190,19 +207,21 @@ const Diagnostico = () => {
         updateCheckState[updateCheckState.length - 1] = false
         setIsP8Checked(updateCheckState)
 
+        let p: string[]
         if (checked) {
-            setP8([...p8, value])
+            p = [...p8, value]
+            setP8(p)
             setPuntajeTotal(puntajeTotal + 1)
         } else {
-            const p = p8.filter((p) => p !== value)
-            setP8([...p])
+            p = p8.filter((p) => p !== value)
+            setP8(p)
             setPuntajeTotal(puntajeTotal - 1)
         }
 
         setRespuestas((prevState) => {
             return {
                 ...prevState,
-                [name]: p8,
+                [name]: p,
             }
         })
 
@@ -229,26 +248,29 @@ const Diagnostico = () => {
         updateCheckState[updateCheckState.length - 1] = false
         setIsP9Checked(updateCheckState)
 
+        let p: string[]
         if (checked) {
-            setP9([...p9, value])
+            p = [...p9, value]
+            setP9(p)
             setPuntajeTotal(puntajeTotal + 1)
         } else {
-            const p = p9.filter((p) => p !== value)
-            setP9([...p])
+            p = p9.filter((p) => p !== value)
+            setP9(p)
             setPuntajeTotal(puntajeTotal - 1)
         }
 
         setRespuestas((prevState) => {
             return {
                 ...prevState,
-                [name]: p9,
+                [name]: p,
             }
         })
 
         const trues = updateCheckState.filter((i) => i === true)
         if (value === 'Ninguno') {
-            setIsP9Checked([false, false, true])
+            setIsP9Checked([false, false, false, true])
             setPuntajeTotal(puntajeTotal - trues.length)
+
             setRespuestas((prevState) => {
                 return {
                     ...prevState,
@@ -267,26 +289,29 @@ const Diagnostico = () => {
         updateCheckState[updateCheckState.length - 1] = false
         setIsP10Checked(updateCheckState)
 
+        let p: string[]
         if (checked) {
-            setP10([...p10, value])
+            p = [...p10, value]
+            setP10(p)
             setPuntajeTotal(puntajeTotal + 1)
         } else {
-            const p = p10.filter((p) => p !== value)
-            setP10([...p])
+            p = p10.filter((p) => p !== value)
+            setP10(p)
             setPuntajeTotal(puntajeTotal - 1)
         }
 
         setRespuestas((prevState) => {
             return {
                 ...prevState,
-                [name]: p10,
+                [name]: p,
             }
         })
 
         const trues = updateCheckState.filter((i) => i === true)
         if (value === 'Ninguno') {
-            setIsP10Checked([false, false, true])
+            setIsP10Checked([false, false, false, true])
             setPuntajeTotal(puntajeTotal - trues.length)
+
             setRespuestas((prevState) => {
                 return {
                     ...prevState,
@@ -305,26 +330,27 @@ const Diagnostico = () => {
         updateCheckState[updateCheckState.length - 1] = false
         setIsP11Checked(updateCheckState)
 
+        let p: string[]
         if (checked) {
-            setP11([...p11, value])
+            p = [...p11, value]
+            setP11(p)
             setPuntajeTotal(puntajeTotal + 1)
         } else {
-            const p = p11.filter((p) => p !== value)
-            setP11([...p])
+            p = p11.filter((p) => p !== value)
+            setP11(p)
             setPuntajeTotal(puntajeTotal - 1)
         }
 
         setRespuestas((prevState) => {
             return {
                 ...prevState,
-                [name]: p11,
+                [name]: p,
             }
         })
 
         const trues = updateCheckState.filter((i) => i === true)
         if (value === 'Ninguno') {
-            setP11([])
-            setIsP11Checked([false, false, false, false, true])
+            setIsP11Checked([false, false, false, true])
             setPuntajeTotal(puntajeTotal - trues.length)
 
             setRespuestas((prevState) => {
@@ -345,33 +371,35 @@ const Diagnostico = () => {
         updateCheckState[updateCheckState.length - 1] = false
         setIsP12Checked(updateCheckState)
 
+        let p: string[]
         if (checked) {
-            setP12([...p12, value])
+            p = [...p12, value]
+            setP12(p)
             setPuntajeTotal(puntajeTotal + 1)
         } else {
-            const p = p12.filter((p) => p !== value)
-            setP12([...p])
+            p = p12.filter((p) => p !== value)
+            setP12(p)
             setPuntajeTotal(puntajeTotal - 1)
         }
 
         setRespuestas((prevState) => {
             return {
                 ...prevState,
-                [name]: p12,
+                [name]: p,
             }
         })
 
         const trues = updateCheckState.filter((i) => i === true)
         if (value === 'Ninguno') {
-            setIsP12Checked([false, false, false, false, false, false, false, false, false, true])
+            setIsP12Checked([false, false, false, true])
             setPuntajeTotal(puntajeTotal - trues.length)
+
             setRespuestas((prevState) => {
                 return {
                     ...prevState,
                     [name]: [],
                 }
             })
-            return
         }
     }
 
@@ -384,19 +412,21 @@ const Diagnostico = () => {
         updateCheckState[updateCheckState.length - 1] = false
         setIsP13Checked(updateCheckState)
 
+        let p: string[]
         if (checked) {
-            setP13([...p13, value])
+            p = [...p13, value]
+            setP13(p)
             setPuntajeTotal(puntajeTotal + 1)
         } else {
-            const p = p13.filter((p) => p !== value)
-            setP13([...p])
+            p = p13.filter((p) => p !== value)
+            setP13(p)
             setPuntajeTotal(puntajeTotal - 1)
         }
 
         setRespuestas((prevState) => {
             return {
                 ...prevState,
-                [name]: p13,
+                [name]: p,
             }
         })
 
@@ -404,6 +434,7 @@ const Diagnostico = () => {
         if (value === 'Ninguno') {
             setIsP13Checked([false, false, false, true])
             setPuntajeTotal(puntajeTotal - trues.length)
+
             setRespuestas((prevState) => {
                 return {
                     ...prevState,
@@ -422,26 +453,29 @@ const Diagnostico = () => {
         updateCheckState[updateCheckState.length - 1] = false
         setIsP14Checked(updateCheckState)
 
+        let p: string[]
         if (checked) {
-            setP14([...p14, value])
+            p = [...p14, value]
+            setP14(p)
             setPuntajeTotal(puntajeTotal + 1)
         } else {
-            const p = p14.filter((p) => p !== value)
-            setP14([...p])
+            p = p14.filter((p) => p !== value)
+            setP14(p)
             setPuntajeTotal(puntajeTotal - 1)
         }
 
         setRespuestas((prevState) => {
             return {
                 ...prevState,
-                [name]: p14,
+                [name]: p,
             }
         })
 
         const trues = updateCheckState.filter((i) => i === true)
         if (value === 'Ninguno') {
-            setIsP14Checked([false, false, true])
+            setIsP14Checked([false, false, false, true])
             setPuntajeTotal(puntajeTotal - trues.length)
+
             setRespuestas((prevState) => {
                 return {
                     ...prevState,
@@ -460,26 +494,29 @@ const Diagnostico = () => {
         updateCheckState[updateCheckState.length - 1] = false
         setIsP15Checked(updateCheckState)
 
+        let p: string[]
         if (checked) {
-            setP15([...p15, value])
+            p = [...p15, value]
+            setP15(p)
             setPuntajeTotal(puntajeTotal + 1)
         } else {
-            const p = p15.filter((p) => p !== value)
-            setP15([...p])
+            p = p15.filter((p) => p !== value)
+            setP15(p)
             setPuntajeTotal(puntajeTotal - 1)
         }
 
         setRespuestas((prevState) => {
             return {
                 ...prevState,
-                [name]: p15,
+                [name]: p,
             }
         })
 
         const trues = updateCheckState.filter((i) => i === true)
         if (value === 'Ninguno') {
-            setIsP15Checked([false, false, false, false, false, false, true])
+            setIsP15Checked([false, false, false, true])
             setPuntajeTotal(puntajeTotal - trues.length)
+
             setRespuestas((prevState) => {
                 return {
                     ...prevState,
@@ -498,26 +535,29 @@ const Diagnostico = () => {
         updateCheckState[updateCheckState.length - 1] = false
         setIsP16Checked(updateCheckState)
 
+        let p: string[]
         if (checked) {
-            setP16([...p16, value])
+            p = [...p16, value]
+            setP16(p)
             setPuntajeTotal(puntajeTotal + 1)
         } else {
-            const p = p16.filter((p) => p !== value)
-            setP16([...p])
+            p = p16.filter((p) => p !== value)
+            setP16(p)
             setPuntajeTotal(puntajeTotal - 1)
         }
 
         setRespuestas((prevState) => {
             return {
                 ...prevState,
-                [name]: p16,
+                [name]: p,
             }
         })
 
         const trues = updateCheckState.filter((i) => i === true)
-        if (value === 'No') {
-            setIsP16Checked([false, true])
+        if (value === 'Ninguno') {
+            setIsP16Checked([false, false, false, true])
             setPuntajeTotal(puntajeTotal - trues.length)
+
             setRespuestas((prevState) => {
                 return {
                     ...prevState,
@@ -536,26 +576,29 @@ const Diagnostico = () => {
         updateCheckState[updateCheckState.length - 1] = false
         setIsP17Checked(updateCheckState)
 
+        let p: string[]
         if (checked) {
-            setP17([...p17, value])
+            p = [...p17, value]
+            setP17(p)
             setPuntajeTotal(puntajeTotal + 1)
         } else {
-            const p = p17.filter((p) => p !== value)
-            setP17([...p])
+            p = p17.filter((p) => p !== value)
+            setP17(p)
             setPuntajeTotal(puntajeTotal - 1)
         }
 
         setRespuestas((prevState) => {
             return {
                 ...prevState,
-                [name]: p17,
+                [name]: p,
             }
         })
 
         const trues = updateCheckState.filter((i) => i === true)
-        if (value === 'No') {
-            setIsP17Checked([false, true])
+        if (value === 'Ninguno') {
+            setIsP17Checked([false, false, false, true])
             setPuntajeTotal(puntajeTotal - trues.length)
+
             setRespuestas((prevState) => {
                 return {
                     ...prevState,
@@ -565,77 +608,88 @@ const Diagnostico = () => {
         }
     }
 
-    const buttonClickHandler = (operador: string) => {
+    const buttonClickHandler = async () => {
         window.scrollTo(0, 0)
 
         const porcentaje = ((puntajeTotal / 36) * 100).toFixed(0)
+        console.log(porcentaje)
         setPorcentajeTotal(+porcentaje)
-        console.log('respuesta:', respuestas)
-        console.log('item:', isItem)
-        console.log('puntaje:', puntajeTotal)
 
-        if (operador === 'sumar') {
-            if (isItem === 3 && puntajeTotal < 3) {
-                setTitulo('Nivel 1: Marco Teórico')
-                setPrimerAnalisis(resultados[1])
-                setPrevItem(3)
-                setIsItem(11)
-            } else if (isItem === 4 && puntajeTotal < 6) {
-                setTitulo('Nivel 2: Búsqueda')
-                setPrimerAnalisis(resultados[2])
-                setPrevItem(4)
-                setIsItem(11)
-            } else if (isItem === 5 && puntajeTotal < 8) {
-                setTitulo('Nivel 3: Generación de Ideas')
-                setPrimerAnalisis(resultados[3])
-                setPrevItem(5)
-                setIsItem(11)
-            } else if (isItem === 6 && puntajeTotal < 10) {
-                setTitulo('Nivel 4: Factibilidad')
-                setPrimerAnalisis(resultados[4])
-                setPrevItem(6)
-                setIsItem(11)
-            } else if (isItem === 7 && puntajeTotal < 23) {
-                setTitulo('Nivel 5: Caso de Negocio')
-                setPrimerAnalisis(resultados[5])
-                setPrevItem(7)
-                setIsItem(11)
-            } else if (isItem === 8 && puntajeTotal < 26) {
-                setTitulo('Nivel 6: Pilotaje - Prototipaje')
-                setPrimerAnalisis(resultados[6])
-                setPrevItem(8)
-                setIsItem(11)
-            } else if (isItem === 9 && puntajeTotal < 28) {
-                setTitulo('Nivel 7: Implementación')
-                setPrimerAnalisis(resultados[7])
-                setPrevItem(9)
-                setIsItem(11)
-            } else {
-                setPrevItem(isItem)
-                setIsItem(isItem + 1)
-            }
+        if (isItem === 3 && puntajeTotal < 3) {
+            setTitulo('Nivel 1: Marco Teórico')
+            setPrimerAnalisis(mensajes[1])
+            setPrevItem(3)
+            setIsItem(11)
+            formRef.current!.dispatchEvent(new Event("submit", { cancelable: true, bubbles: true }))
+        } else if (isItem === 4 && puntajeTotal < 6) {
+            setTitulo('Nivel 2: Búsqueda')
+            setPrimerAnalisis(mensajes[2])
+            setPrevItem(4)
+            setIsItem(11)
+            formRef.current!.dispatchEvent(new Event("submit", { cancelable: true, bubbles: true }))
+        } else if (isItem === 5 && puntajeTotal < 8) {
+            setTitulo('Nivel 3: Generación de Ideas')
+            setPrimerAnalisis(mensajes[3])
+            setPrevItem(5)
+            setIsItem(11)
+            formRef.current!.dispatchEvent(new Event("submit", { cancelable: true, bubbles: true }))
+        } else if (isItem === 6 && puntajeTotal < 10) {
+            setTitulo('Nivel 4: Factibilidad')
+            setPrimerAnalisis(mensajes[4])
+            setPrevItem(6)
+            setIsItem(11)
+            formRef.current!.dispatchEvent(new Event("submit", { cancelable: true, bubbles: true }))
+        } else if (isItem === 7 && puntajeTotal < 23) {
+            setTitulo('Nivel 5: Caso de Negocio')
+            setPrimerAnalisis(mensajes[5])
+            setPrevItem(7)
+            setIsItem(11)
+            formRef.current!.dispatchEvent(new Event("submit", { cancelable: true, bubbles: true }))
+        } else if (isItem === 8 && puntajeTotal < 26) {
+            setTitulo('Nivel 6: Pilotaje - Prototipaje')
+            setPrimerAnalisis(mensajes[6])
+            setPrevItem(8)
+            setIsItem(11)
+            formRef.current!.dispatchEvent(new Event("submit", { cancelable: true, bubbles: true }))
+        } else if (isItem === 9 && puntajeTotal < 28) {
+            setTitulo('Nivel 7: Implementación')
+            setPrimerAnalisis(mensajes[7])
+            setPrevItem(9)
+            setIsItem(11)
+            formRef.current!.dispatchEvent(new Event("submit", { cancelable: true, bubbles: true }))
+        } else if (isItem === 10 && puntajeTotal >= 28) {
+            setTitulo('Nivel 8: Monitoreo, Reporte y Revisión')
+            setPrimerAnalisis(mensajes[8])
+            setPrevItem(10)
+            setIsItem(11)
+            formRef.current!.dispatchEvent(new Event("submit", { cancelable: true, bubbles: true }))
+        } else {
+            setPrevItem(isItem)
+            setIsItem(isItem + 1)
         }
     }
 
-    const submitHandler = (event: FormEvent<HTMLFormElement>) => {
+    const submitHandler = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault()
 
-        if (puntajeTotal >= 28) {
-            setTitulo('Nivel 8: Monitoreo, Reporte y Revisión')
-            setPrimerAnalisis(resultados[8])
-            setIsItem(isItem + 1)
-            setPrevItem(10)
+        //TODO: Guardar resultados en la base de datos
+        //
+        console.log('respuesta:', respuestas)
+        console.log('item:', isItem)
+        console.log('puntaje:', puntajeTotal)
+        console.log('%', puntajeTotal / 36 * 100)
+
+        const diagnostico = {
+            puntajeTotal, porcentajeTotal: (+puntajeTotal / 36 * 100).toFixed(0), respuestas
         }
 
-        setPorcentajeTotal(+((puntajeTotal / 36) * 100).toFixed(0))
-
-        //TODO: Guardar resultados en la base de datos
+        await postDiagnostico(userId, token, diagnostico)
     }
 
 
     return (
         <div className={`${styles.diagnostico} container`}>
-            <form onSubmit={submitHandler}>
+            <form onSubmit={submitHandler} ref={formRef}>
                 {isItem === 1 && (
                     <>
                         <h2 className={styles.item}>!EMPECEMOS¡ Te haremos algunas preguntas generales para conoceer más de tu organización</h2>
@@ -732,38 +786,11 @@ const Diagnostico = () => {
                     </div>
                 )}
                 <div className={styles.buttons}>
-                    {isItem < 10 && <Button title='Siguiente' type='button' clickHandler={() => buttonClickHandler('sumar')} />}
-                    {isItem === 10 && <Button title='Enviar' type='submit' />}
+                    {isItem !== 11 && <Button title='Siguiente' type='button' clickHandler={buttonClickHandler} />}
                 </div>
             </form>
         </div>
     )
 }
 
-function useWindowSize() {
-    // Initialize state with undefined width/height so server and client renders match
-    // Learn more here: https://joshwcomeau.com/react/the-perils-of-rehydration/
-    const [windowSize, setWindowSize] = useState({
-        width: 0,
-        height: 0,
-    })
-    useEffect(() => {
-        window.scrollTo(0, 0)
-        // Handler to call on window resize
-        function handleResize() {
-            // Set window width/height to state
-            setWindowSize({
-                width: window.innerWidth,
-                height: window.innerHeight,
-            })
-        }
-        // Add event listener
-        window.addEventListener('resize', handleResize)
-        // Call handler right away so state gets updated with initial window size
-        handleResize()
-        // Remove event listener on cleanup
-        return () => window.removeEventListener('resize', handleResize)
-    }, []) // Empty array ensures that effect is only run on mount
-    return windowSize
-}
 export default Diagnostico

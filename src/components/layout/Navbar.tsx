@@ -1,16 +1,29 @@
-import React, { useState } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import React, { useState, useContext } from 'react'
+import { useNavigate, Link, NavLink } from 'react-router-dom'
+
+import UsuarioContext from '../../context/user-context'
 
 import Drawer from 'react-modern-drawer'
 import 'react-modern-drawer/dist/index.css'
 
 import styles from './Navbar.module.css'
 
+
 const Navbar = () => {
+    const navigate = useNavigate()
+    const { userId, isLoggedIn, logout } = useContext(UsuarioContext)
     const [isOpen, setIsOpen] = useState<boolean>(false)
+
 
     const toggleDrawer = () => {
         setIsOpen(prevState => !prevState)
+    }
+
+    const logoutHandler = () => {
+        logout()
+
+        navigate('/login')
+
     }
     return (
         <nav className={styles.nav}>
@@ -43,20 +56,29 @@ const Navbar = () => {
                                 onClick={toggleDrawer}
                             >Inicio</NavLink>
                         </li>
-                        <li>
-                            <NavLink
-                                to='/login'
-                                className={({ isActive }) => isActive ? 'activeLink' : undefined}
-                                onClick={toggleDrawer}
-                            >Login</NavLink>
-                        </li>
-                        <li>
-                            <NavLink
-                                to='/cuenta'
-                                className={({ isActive }) => isActive ? 'activeLink' : undefined}
-                                onClick={toggleDrawer}
-                            >Cuenta</NavLink>
-                        </li>
+                        {!isLoggedIn &&
+                            <li>
+                                <NavLink
+                                    to='/login'
+                                    className={({ isActive }) => isActive ? 'activeLink' : undefined}
+                                    onClick={toggleDrawer}
+                                >Login</NavLink>
+                            </li>
+                        }
+                        {isLoggedIn &&
+                            <>
+                                <li>
+                                    <NavLink
+                                        to={`/usuario/${userId}`}
+                                        className={({ isActive }) => isActive ? 'activeLink' : undefined}
+                                        onClick={toggleDrawer}
+                                    >Cuenta</NavLink>
+                                </li>
+                                <li>
+                                    <a onClick={logoutHandler}>Logout</a>
+                                </li>
+                            </>
+                        }
                     </ul>
                 </Drawer>
                 <ul className={styles.links}>
@@ -66,18 +88,27 @@ const Navbar = () => {
                             className={({ isActive }) => isActive ? 'activeLink' : undefined}
                         >Inicio</NavLink>
                     </li>
-                    <li>
-                        <NavLink
-                            to='/login'
-                            className={({ isActive }) => isActive ? 'activeLink' : undefined}
-                        >Login</NavLink>
-                    </li>
-                    <li>
-                        <NavLink
-                            to='/cuenta/:id'
-                            className={({ isActive }) => isActive ? 'activeLink' : undefined}
-                        >Cuenta</NavLink>
-                    </li>
+                    {!isLoggedIn &&
+                        < li >
+                            <NavLink
+                                to='/login'
+                                className={({ isActive }) => isActive ? 'activeLink' : undefined}
+                            >Login</NavLink>
+                        </li>
+                    }
+                    {isLoggedIn &&
+                        <>
+                            <li>
+                                <NavLink
+                                    to={`/usuario/${userId}`}
+                                    className={({ isActive }) => isActive ? 'activeLink' : undefined}
+                                >Cuenta</NavLink>
+                            </li>
+                            <li>
+                                <a onClick={logoutHandler}>Logout</a>
+                            </li>
+                        </>
+                    }
                 </ul>
                 <button onClick={toggleDrawer}>
                     <svg stroke='currentColor' fill='#ffffff' strokeWidth='0'
@@ -87,7 +118,7 @@ const Navbar = () => {
                     </svg>
                 </button>
             </div>
-        </nav>
+        </nav >
     )
 }
 

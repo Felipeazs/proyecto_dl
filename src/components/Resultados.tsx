@@ -6,8 +6,17 @@ import Analisis3 from './resultados/Analisis3'
 
 import styles from './Resultados.module.css'
 
-const Resultados = () => {
+interface DataTypes {
+    _id: string
+    puntajeTotal: number
+    porcentajeTotal: number
+    createdAt: Date
+}
+
+const Resultados = ({ data }) => {
     const [tabs, setTabs] = useState('dmec')
+
+    console.log(data)
 
     const clickHandler = (tab: string) => {
         setTabs(tab)
@@ -16,7 +25,7 @@ const Resultados = () => {
     let contenido
     switch (tabs) {
         case 'dmec':
-            contenido = <DMEC />
+            contenido = <DMEC data={data} />
             break
         case 'analisis2':
             contenido = <Analisis2 />

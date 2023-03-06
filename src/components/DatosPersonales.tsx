@@ -2,19 +2,32 @@ import React from 'react'
 
 import Button from './ui/Button'
 
+interface UserDataProps {
+    userData: {
+        nombre: string
+        apellidos: string
+        email: string
+    }
+}
 
-const DatosPersonales = () => {
+const DatosPersonales = ({ userData }: UserDataProps) => {
+    const { nombre, apellidos, email } = userData
+
     return (
         <div>
-            <h2>Panel Principal</h2>
-            <ul>
-                <li>nombre:</li>
-                <li>apellidos:</li>
-                <li>email:</li>
-                <li>telefono:</li>
-            </ul>
+            {email && (
+                <>
+                    <h2>Panel Principal</h2>
+                    <ul>
+                        <li>nombre: {nombre}</li>
+                        <li>apellidos: {apellidos}</li>
+                        <li>email: {email}</li>
+                        <li>telefono:</li>
+                    </ul>
+                </>
+            )}
 
-            <Button title="Editar" type="button" />
+            <Button title='Editar' type='button' />
         </div>
     )
 }
