@@ -13,7 +13,7 @@ interface DataTypes {
     createdAt: Date
 }
 
-const DMEC = (data) => {
+const DMEC = ({ data }) => {
 
     console.log(data)
 
