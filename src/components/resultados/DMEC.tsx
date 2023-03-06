@@ -7,13 +7,12 @@ import { Tooltip } from 'react-tooltip'
 import 'react-tooltip/dist/react-tooltip.css'
 
 interface DataTypes {
-    _id: string
     puntajeTotal: number
     porcentajeTotal: number
     createdAt: Date
+    _id: string
 }
-
-const DMEC = ({ data }) => {
+const DMEC = ({ data }: { data: DataTypes[] }) => {
 
     console.log(data)
 

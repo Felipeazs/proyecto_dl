@@ -1,4 +1,5 @@
-const baseUrl = import.meta.env.VITE_BASE_URL
+const ENV = import.meta.env.VITE_NODE_ENV
+const baseUrl = ENV === 'production' ? import.meta.env.VITE_BASE_URL : import.meta.env.VITE_DEV_BASE_URL
 
 interface DataTypes {
     _id: string

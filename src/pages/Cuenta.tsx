@@ -16,18 +16,14 @@ interface DataTypes {
 }
 const Cuenta = () => {
     const { getDiagnosticos } = useHttp()
-    const { userId, token } = useContext(UsuarioContext)
+    const { userId, token, usuarioData } = useContext(UsuarioContext)
     const [panel, setPanel] = useState('datos_personales')
-    const [loading, setLoading] = useState(true)
-    const [userData, setUserData] = useState<{ nombre: string, apellidos: string, email: string }>({ nombre: '', apellidos: '', email: '' })
-    const [resultados, setResultados] = useState<{ porcentajeTotal, puntajeTotal, createdAt, _id }[]>([{ porcentajeTotal: 0, puntajeTotal: 0, createdAt: new Date(), _id: '' }])
+    const [resultados, setResultados] = useState<DataTypes[]>([{ porcentajeTotal: 0, puntajeTotal: 0, createdAt: new Date(), _id: '' }])
 
     useEffect(() => {
         const fetching = async () => {
             const { diagnostico_encontrado } = await getDiagnosticos(userId, token)
             setResultados(diagnostico_encontrado)
-
-            console.log(diagnostico_encontrado)
         }
         fetching()
     }, [])
@@ -39,7 +35,7 @@ const Cuenta = () => {
     let paneles
     switch (panel) {
         case 'datos_personales':
-            paneles = <DatosPersonales userData={userData} />
+            paneles = <DatosPersonales userData={usuarioData} />
             break
         case 'resultados':
             paneles = <Resultados data={resultados} />

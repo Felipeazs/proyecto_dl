@@ -3,15 +3,17 @@ import React from 'react'
 import Button from './ui/Button'
 
 interface UserDataProps {
-    userData: {
-        nombre: string
-        apellidos: string
-        email: string
-    }
+    nombre: string
+    apellidos: string
+    email: string
 }
 
-const DatosPersonales = ({ userData }: UserDataProps) => {
+const DatosPersonales = ({ userData }: { userData: UserDataProps }) => {
     const { nombre, apellidos, email } = userData
+
+    const clickHandler = () => {
+        console.log('editar usuario')
+    }
 
     return (
         <div>
@@ -27,7 +29,7 @@ const DatosPersonales = ({ userData }: UserDataProps) => {
                 </>
             )}
 
-            <Button title='Editar' type='button' />
+            <Button title='Editar' type='button' clickHandler={clickHandler} />
         </div>
     )
 }

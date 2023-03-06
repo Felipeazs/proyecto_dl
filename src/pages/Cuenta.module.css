@@ -15,6 +15,9 @@
     width: 100%;
     border-top: 1px solid #DDD;
 }
+.panel_lateral li {
+    transition: 0.15s ease-in;
+}
 .panel_lateral li:hover {
     background-color: #82BB85;
     color: #ffffff;

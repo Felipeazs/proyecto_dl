@@ -6,17 +6,16 @@ import Analisis3 from './resultados/Analisis3'
 
 import styles from './Resultados.module.css'
 
+
 interface DataTypes {
-    _id: string
     puntajeTotal: number
     porcentajeTotal: number
     createdAt: Date
+    _id: string
 }
 
-const Resultados = ({ data }) => {
+const Resultados = ({ data }: { data: DataTypes[] }) => {
     const [tabs, setTabs] = useState('dmec')
-
-    console.log(data)
 
     const clickHandler = (tab: string) => {
         setTabs(tab)

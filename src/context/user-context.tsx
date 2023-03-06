@@ -4,7 +4,7 @@ const UsuarioContext = createContext({
     isLoggedIn: false,
     userId: '',
     token: '',
-    usuarioData: {},
+    usuarioData: { nombre: '', apellidos: '', email: '' },
     loginData: ({ usuarioId, token, nombre, apellidos, email }: { usuarioId: string, token: string, nombre: string, apellidos: string, email: string }) => { },
     logout: () => { }
 })
@@ -26,9 +26,11 @@ export const UsuarioProvider = ({ children }: PropsWithChildren) => {
         setToken('')
     }
 
-    return <UsuarioContext.Provider value={{ isLoggedIn: !!token, userId, token, usuarioData, loginData, logout }}>
-        {children}
-    </UsuarioContext.Provider>
+    return (
+        <UsuarioContext.Provider value={{ isLoggedIn: !!token, userId, token, usuarioData, loginData, logout }}>
+            {children}
+        </UsuarioContext.Provider>
+    )
 }
 
 export default UsuarioContext
