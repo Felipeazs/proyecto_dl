@@ -20,7 +20,7 @@ const Cuenta = () => {
     const { getDiagnosticos } = useHttp()
     const { userId, token, usuarioData } = useContext(UsuarioContext)
     const [panel, setPanel] = useState('datos_personales')
-    const [resultados, setResultados] = useState<DataTypes[]>([{ porcentajeTotal: 0, puntajeTotal: 0, nivelMadurez: 0, createdAt: new Date(), _id: '' }])
+    const [resultados, setResultados] = useState<DataTypes[]>([{ porcentajeTotal: 0, puntajeTotal: 0, nivelMadurez: 0, respuestas: {}, createdAt: new Date(), _id: '' }])
 
     useEffect(() => {
         const fetching = async () => {
