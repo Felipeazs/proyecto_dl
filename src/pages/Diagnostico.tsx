@@ -612,7 +612,6 @@ const Diagnostico = () => {
         window.scrollTo(0, 0)
 
         const porcentaje = ((puntajeTotal / 36) * 100).toFixed(0)
-        console.log(porcentaje)
         setPorcentajeTotal(+porcentaje)
 
         if (isItem === 3 && puntajeTotal < 3) {
@@ -672,15 +671,10 @@ const Diagnostico = () => {
     const submitHandler = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault()
 
-        //TODO: Guardar resultados en la base de datos
-        //
-        console.log('respuesta:', respuestas)
-        console.log('item:', isItem)
-        console.log('puntaje:', puntajeTotal)
-        console.log('%', puntajeTotal / 36 * 100)
+        const nivelMadurez = prevItem - 1
 
         const diagnostico = {
-            puntajeTotal, porcentajeTotal: (+puntajeTotal / 36 * 100).toFixed(0), respuestas
+            puntajeTotal, porcentajeTotal: (+puntajeTotal / 36 * 100).toFixed(0), nivelMadurez, respuestas
         }
 
         await postDiagnostico(userId, token, diagnostico)

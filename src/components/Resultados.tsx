@@ -10,6 +10,8 @@ import styles from './Resultados.module.css'
 interface DataTypes {
     puntajeTotal: number
     porcentajeTotal: number
+    nivelMadurez: number
+    respuestas: {}
     createdAt: Date
     _id: string
 }
@@ -36,7 +38,7 @@ const Resultados = ({ data }: { data: DataTypes[] }) => {
 
     return (
         <div>
-            <h2>Resultados</h2>
+            <h2>Diagnósticos</h2>
             <div>
                 <ul className={styles.tabs}>
                     <li onClick={() => clickHandler('dmec')}>DMEC</li>

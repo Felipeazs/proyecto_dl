@@ -1,5 +1,7 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+
+import Button from '../ui/Button'
 
 import styles from './DMEC.module.css'
 
@@ -9,42 +11,58 @@ import 'react-tooltip/dist/react-tooltip.css'
 interface DataTypes {
     puntajeTotal: number
     porcentajeTotal: number
+    nivelMadurez: number
+    respuestas: {}
     createdAt: Date
     _id: string
 }
 const DMEC = ({ data }: { data: DataTypes[] }) => {
+    const navigate = useNavigate()
 
-    console.log(data)
+    const resultadoHandler = (id: string) => {
+        navigate(`/resultado/dmec/${id}`)
+    }
+
+    const dmecHandler = () => {
+        navigate('/diagnostico')
+    }
+
 
     return (
         <div className={styles.dmec}>
-            <Tooltip id="nm" />
-            <Tooltip id="pa" />
+            <Tooltip id='pa' />
             <h3>Diagnóstico de madurez en economía circular</h3>
             <table>
                 <thead>
                     <tr>
                         <th>#</th>
                         <th>id</th>
-                        <th>puntaje</th>
-                        <th data-tooltip-id="pa" data-tooltip-content="Porcentaje de avance" data-tooltil-place="top">% (*)</th>
-                        <th data-tooltip-id="nm" data-tooltip-content="Nivel de madurez" data-tooltil-place="top">NM (*)</th>
+                        <th data-tooltip-id='pa' data-tooltip-content='max: 36' data-tooltil-place='top'>
+                            puntaje
+                        </th>
+                        <th data-tooltip-id='pa' data-tooltip-content='Porcentaje de avance' data-tooltil-place='top'>
+                            %
+                        </th>
+                        <th data-tooltip-id='pa' data-tooltip-content='Niveles de madurez (1 a 8)' data-tooltil-place='top'>
+                            NM
+                        </th>
                         <th>fecha</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {data.map((d, i) =>
-                        <tr key={i}>
+                    {data.map((d, i) => (
+                        <tr key={i} onClick={() => resultadoHandler(d._id)}>
                             <td>{i + 1}</td>
-                            <td><Link to="/resultados/:id">{d._id}</Link></td>
+                            <td>{d._id}</td>
                             <td>{d.puntajeTotal}</td>
                             <td>{`${d.porcentajeTotal}%`}</td>
-                            <td>8</td>
+                            <td>{d.nivelMadurez ? d.nivelMadurez : 'nn'}</td>
                             <td>{new Date(d.createdAt).toLocaleDateString()}</td>
                         </tr>
-                    )}
+                    ))}
                 </tbody>
             </table>
+            <Button type='button' title='Realizar DMEC' className={styles.button} clickHandler={dmecHandler} />
         </div>
     )
 }

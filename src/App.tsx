@@ -7,7 +7,7 @@ import Home from './pages/Home'
 import Diagnostico from './pages/Diagnostico'
 import Login from './pages/Login'
 import Cuenta from './pages/Cuenta'
-import Resultados from './pages/Resultados'
+import ResultadoDMEC from './pages/ResultadoDMEC'
 import NotFound from './pages/NotFound'
 import Layout from './components/layout/Layout'
 
@@ -27,7 +27,7 @@ function App() {
                         {isLoggedIn &&
                             <>
                                 <Route path='/usuario/:id' element={<Cuenta />} />
-                                <Route path='/usuario/:id/resultados' element={<Resultados />} />
+                                <Route path='/resultado/dmec/:id' element={<ResultadoDMEC />} />
                             </>
                         }
                         <Route path='*' element={<NotFound />} />

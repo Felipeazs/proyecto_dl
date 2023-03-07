@@ -5,6 +5,8 @@ interface DataTypes {
     _id: string
     puntajeTotal: number
     porcentajeTotal: number
+    nivelMadurez: number
+    respuestas: {}
     createdAt: Date
 }
 
@@ -64,7 +66,19 @@ const useHttp = () => {
             .then((res) => res.json())
             .then((data) => data)
             .catch((err) => console.log(err))
+    }
 
+    const getDiagnostico = async (usuarioId: string, token: string, diagnosticoId: string): Promise<{ diagnostico: DataTypes }> => {
+        return fetch(`${baseUrl}/api/usuario/${usuarioId}/diagnostico/${diagnosticoId}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        })
+            .then((res) => res.json())
+            .then((data) => data)
+            .catch((err) => console.log(err))
     }
 
     return {
@@ -72,7 +86,8 @@ const useHttp = () => {
         loginUser,
         getUser,
         postDiagnostico,
-        getDiagnosticos
+        getDiagnosticos,
+        getDiagnostico
     }
 }
 

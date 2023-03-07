@@ -19,7 +19,7 @@ const DatosPersonales = ({ userData }: { userData: UserDataProps }) => {
         <div>
             {email && (
                 <>
-                    <h2>Panel Principal</h2>
+                    <h2>Datos Personales</h2>
                     <ul>
                         <li>nombre: {nombre}</li>
                         <li>apellidos: {apellidos}</li>

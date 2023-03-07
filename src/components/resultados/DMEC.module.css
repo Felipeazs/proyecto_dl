@@ -10,3 +10,28 @@
 .dmec thead th {
     border-bottom: 1px solid #ddd;
 }
+.dmec tbody tr {
+    transition: 0.15s ease-in;
+}
+.dmec tbody tr:hover {
+    color: white;
+    background: #738290;
+    cursor: pointer;
+}
+.dmec .button {
+    display: none;
+}
+@media (min-width: 497px) {
+    .dmec .button {
+        display: inline-block;
+        position: absolute;
+        top: 270px;
+        right: 2%;
+    }
+}
+@media (min-width: 929px) {
+    .dmec .button {
+        top: 200px;
+        right: 18%;
+    }
+}
