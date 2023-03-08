@@ -58,7 +58,8 @@ const Login = () => {
             return
         }
 
-        loginData(usuario)
+        const { usuarioId, token } = usuario
+        loginData(usuarioId, token)
 
         navigate(`/usuario/${usuario.usuarioId}`)
     }
@@ -88,7 +89,8 @@ const Login = () => {
             return
         }
 
-        loginData(usuario)
+        const { usuarioId, token } = usuario
+        loginData(usuarioId, token)
 
         navigate(`/usuario/${usuario.usuarioId}`)
     }

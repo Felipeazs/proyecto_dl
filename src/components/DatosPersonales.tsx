@@ -1,4 +1,5 @@
 import React from 'react'
+import { Dna } from 'react-loader-spinner'
 
 import Button from './ui/Button'
 
@@ -15,9 +16,21 @@ const DatosPersonales = ({ userData }: { userData: UserDataProps }) => {
         console.log('editar usuario')
     }
 
+    if (!email) {
+        return (
+            <Dna
+                visible={true}
+                height="80"
+                width="80"
+                ariaLabel="dna-loading"
+                wrapperStyle={{}}
+                wrapperClass="dna-wrapper"
+            />)
+    }
+
     return (
         <div>
-            {email && (
+            {userData && (
                 <>
                     <h2>Datos Personales</h2>
                     <ul>

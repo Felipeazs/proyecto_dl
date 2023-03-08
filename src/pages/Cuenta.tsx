@@ -17,15 +17,19 @@ interface DataTypes {
     createdAt: Date
 }
 const Cuenta = () => {
-    const { getDiagnosticos } = useHttp()
-    const { userId, token, usuarioData } = useContext(UsuarioContext)
+    const { getDiagnosticos, getUser } = useHttp()
+    const { userId, token } = useContext(UsuarioContext)
     const [panel, setPanel] = useState('datos_personales')
     const [resultados, setResultados] = useState<DataTypes[]>([{ porcentajeTotal: 0, puntajeTotal: 0, nivelMadurez: 0, respuestas: {}, createdAt: new Date(), _id: '' }])
+    const [usuarioData, setUsuarioData] = useState({ nombre: '', apellidos: '', email: '' })
 
     useEffect(() => {
         const fetching = async () => {
             const { diagnostico_encontrado } = await getDiagnosticos(userId, token)
             setResultados(diagnostico_encontrado)
+
+            const { nombre, apellidos, email } = await getUser(userId, token)
+            setUsuarioData({ nombre, apellidos, email })
         }
         fetching()
     }, [])

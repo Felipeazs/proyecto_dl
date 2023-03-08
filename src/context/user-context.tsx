@@ -1,33 +1,48 @@
-import { useState, createContext, PropsWithChildren } from 'react'
+import { useState, createContext, useEffect, useCallback, PropsWithChildren } from 'react'
 
 const UsuarioContext = createContext({
     isLoggedIn: false,
     userId: '',
     token: '',
-    usuarioData: { nombre: '', apellidos: '', email: '' },
-    loginData: ({ usuarioId, token, nombre, apellidos, email }: { usuarioId: string, token: string, nombre: string, apellidos: string, email: string }) => { },
-    logout: () => { }
+    loginData: (usuarioId: string, token: string, expirationDate?: Date) => { },
+    logout: () => { },
 })
 
 export const UsuarioProvider = ({ children }: PropsWithChildren) => {
     const [userId, setUserId] = useState<string>('')
     const [token, setToken] = useState<string>('')
-    const [usuarioData, setUsuarioData] = useState<{ nombre: string, apellidos: string, email: string }>({ nombre: '', apellidos: '', email: '' })
+    const [tokenExpirationDate, setTokenExpirationDate] = useState<Date>()
 
-    const loginData = ({ usuarioId, token, nombre, apellidos, email }: { usuarioId: string, token: string, nombre: string, apellidos: string, email: string }) => {
-        console.log(usuarioId)
+    const loginData = useCallback((usuarioId: string, token: string, expirationDate?: Date) => {
+
         setUserId(usuarioId)
         setToken(token)
-        setUsuarioData({ nombre, apellidos, email })
-    }
+
+        const tokenExpirationTime = expirationDate || new Date(new Date().getTime() + 1000 * 60 * 60)
+        setTokenExpirationDate(tokenExpirationTime)
+
+        localStorage.setItem('userData', JSON.stringify({ userId: usuarioId, token: token, expiration: tokenExpirationTime.toISOString() }))
+
+    }, [])
 
     const logout = () => {
         setUserId('')
         setToken('')
+        setTokenExpirationDate(null)
+        localStorage.removeItem('userData')
     }
 
+    useEffect(() => {
+        const storedData = JSON.parse(localStorage.getItem('userData'))
+        if (storedData && storedData.token && new Date(storedData.expiration) > new Date()) {
+
+            loginData(storedData.userId, storedData.token, new Date(storedData.expiration))
+        }
+
+    }, [loginData])
+
     return (
-        <UsuarioContext.Provider value={{ isLoggedIn: !!token, userId, token, usuarioData, loginData, logout }}>
+        <UsuarioContext.Provider value={{ isLoggedIn: !!token, userId, token, loginData, logout }}>
             {children}
         </UsuarioContext.Provider>
     )
