@@ -21,6 +21,10 @@
 .panel_lateral li:hover {
     background-color: #82BB85;
     color: #ffffff;
+    cursor: pointer;
+}
+.panel_lateral span {
+    font-size: 1.1rem;
 }
 
 @media (min-width: 930px) {

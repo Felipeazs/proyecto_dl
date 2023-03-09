@@ -39,8 +39,6 @@ const Login = () => {
 
         const usuario = await loginUser(credenciales)
 
-        console.log(usuario)
-
         if (usuario.error === '400') {
             toast.error('Ingrese los datos correctamente')
             return

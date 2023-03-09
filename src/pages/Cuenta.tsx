@@ -24,6 +24,7 @@ const Cuenta = () => {
     const [usuarioData, setUsuarioData] = useState({ nombre: '', apellidos: '', email: '' })
 
     useEffect(() => {
+        window.scrollTo(0, 0)
         const fetching = async () => {
             const { diagnostico_encontrado } = await getDiagnosticos(userId, token)
             setResultados(diagnostico_encontrado)
@@ -52,26 +53,16 @@ const Cuenta = () => {
         <div className={`${styles.cuenta} container_2`}>
             <div className={styles.panel_lateral}>
                 <ul>
-                    <li>
-                        <a
-                            type='button'
-                            onClick={() => {
-                                clickHandler('datos_personales')
-                            }}
-                        >
+                    <li onClick={() => { clickHandler('datos_personales') }}>
+                        <span>
                             Datos personales
-                        </a>
+                        </span>
                     </li>
                     <hr />
-                    <li>
-                        <a
-                            type='button'
-                            onClick={() => {
-                                clickHandler('resultados')
-                            }}
-                        >
+                    <li onClick={() => { clickHandler('resultados') }}>
+                        <span>
                             Diagnósticos
-                        </a>
+                        </span>
                     </li>
                     <hr />
                 </ul>
