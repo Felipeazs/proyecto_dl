@@ -10,8 +10,15 @@ interface DataTypes {
     createdAt: Date
 }
 
+interface UsuarioTypes {
+    nombre: string
+    apellidos: string
+    email: string
+    telefono: string
+}
+
 const useHttp = () => {
-    const getUser = async (id: string, token: string) => {
+    const getUser = async (id: string, token: string): Promise<UsuarioTypes> => {
         return fetch(`${baseUrl}/api/usuario/${id}`, {
             method: 'GET',
             headers: { 'Authorization': `Bearer ${token}` },

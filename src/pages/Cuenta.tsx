@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react'
+import { Dna } from 'react-loader-spinner'
 
 import useHttp from '../hooks/httpClient-hook'
 
@@ -21,7 +22,8 @@ const Cuenta = () => {
     const { userId, token } = useContext(UsuarioContext)
     const [panel, setPanel] = useState('datos_personales')
     const [resultados, setResultados] = useState<DataTypes[]>([{ porcentajeTotal: 0, puntajeTotal: 0, nivelMadurez: 0, respuestas: {}, createdAt: new Date(), _id: '' }])
-    const [usuarioData, setUsuarioData] = useState({ nombre: '', apellidos: '', email: '' })
+    const [usuarioData, setUsuarioData] = useState({ nombre: '', apellidos: '', email: '', telefono: '' })
+    const [loading, setLoading] = useState<boolean>(true)
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -29,8 +31,10 @@ const Cuenta = () => {
             const { diagnostico_encontrado } = await getDiagnosticos(userId, token)
             setResultados(diagnostico_encontrado)
 
-            const { nombre, apellidos, email } = await getUser(userId, token)
-            setUsuarioData({ nombre, apellidos, email })
+            const { nombre, apellidos, email, telefono } = await getUser(userId, token)
+            console.log(nombre, apellidos, email, telefono)
+            setUsuarioData({ nombre, apellidos, email, telefono })
+            setLoading(false)
         }
         fetching()
     }, [])
@@ -38,6 +42,8 @@ const Cuenta = () => {
     const clickHandler = (tab: string) => {
         setPanel(tab)
     }
+
+    let loadingIcon = <Dna visible={true} height='80' width='80' ariaLabel='dna-loading' wrapperStyle={{}} wrapperClass='dna-wrapper' />
 
     let paneles
     switch (panel) {
@@ -53,22 +59,26 @@ const Cuenta = () => {
         <div className={`${styles.cuenta} container_2`}>
             <div className={styles.panel_lateral}>
                 <ul>
-                    <li onClick={() => { clickHandler('datos_personales') }}>
-                        <span>
-                            Datos personales
-                        </span>
+                    <li
+                        onClick={() => {
+                            clickHandler('datos_personales')
+                        }}
+                    >
+                        <span>Datos personales</span>
                     </li>
                     <hr />
-                    <li onClick={() => { clickHandler('resultados') }}>
-                        <span>
-                            Diagnósticos
-                        </span>
+                    <li
+                        onClick={() => {
+                            clickHandler('resultados')
+                        }}
+                    >
+                        <span>Diagnósticos</span>
                     </li>
                     <hr />
                 </ul>
             </div>
             <div className='divisor_vertical'></div>
-            <div className={styles.panel_principal}>{paneles}</div>
+            {loading ? loadingIcon : <div className={styles.panel_principal}>{paneles}</div>}
         </div>
     )
 }

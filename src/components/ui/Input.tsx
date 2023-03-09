@@ -4,7 +4,7 @@ import styles from './Input.module.css'
 
 interface InputProps {
     type: string
-    label: string
+    label?: string
     name?: string
     value?: string
     placeholder: string

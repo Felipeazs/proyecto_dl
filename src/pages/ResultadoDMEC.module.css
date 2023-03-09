@@ -1,0 +1,9 @@
+.caracteristicas {
+    text-align: start;
+    border: 1px solid #ddd;
+    padding: 3%;
+    border-radius: 5px;
+}
+.caracteristicas p {
+    line-height: 1rem;
+}
