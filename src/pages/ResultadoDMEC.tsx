@@ -15,7 +15,7 @@ import mensajes from '../assets/resultados.json'
 
 const ResultadoDMEC = () => {
     const navigate = useNavigate()
-    const { id } = useParams()
+    const { n, id } = useParams()
     const { getDiagnostico } = useHttp()
     const { userId, token } = useContext(GlobalContext)
     const [diagnostico, setDiagnostico] = useState({ puntajeTotal: 0, porcentajeTotal: 0, nivelMadurez: 0, respuestas: {} })
@@ -48,6 +48,7 @@ const ResultadoDMEC = () => {
         <div className={`${styles.resultado} container`}>
             <Button title='Volver' type='button' className={styles.button} clickHandler={clickHandler} />
             <Card>
+                <h1>DMEC #{n}</h1>
                 <div className={styles.caracteristicas}>
                     <p>Nombre del proyecto: {respuestas[1]}</p>
                     <p>Objetivo: {respuestas[2]}</p>

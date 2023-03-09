@@ -63,3 +63,11 @@ hr {
     border-width: 0;
     color: #ddd;
 }
+input::placeholder {
+    color: #DDD;
+}
+input:focus {
+    outline: none;
+    border: 2px solid #007b00;
+    border-radius: 5px;
+}

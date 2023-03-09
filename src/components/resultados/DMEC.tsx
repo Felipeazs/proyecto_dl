@@ -19,8 +19,8 @@ interface DataTypes {
 const DMEC = ({ data }: { data: DataTypes[] }) => {
     const navigate = useNavigate()
 
-    const resultadoHandler = (id: string) => {
-        navigate(`/resultado/dmec/${id}`)
+    const resultadoHandler = (id: string, n: number) => {
+        navigate(`/resultado/dmec/${n}/${id}`)
     }
 
     const dmecHandler = () => {
@@ -51,7 +51,7 @@ const DMEC = ({ data }: { data: DataTypes[] }) => {
                 </thead>
                 <tbody>
                     {data.map((d, i) => (
-                        <tr key={i} onClick={() => resultadoHandler(d._id)}>
+                        <tr key={i} onClick={() => resultadoHandler(d._id, i + 1)}>
                             <td>{i + 1}</td>
                             <td>{d._id}</td>
                             <td>{d.puntajeTotal}</td>

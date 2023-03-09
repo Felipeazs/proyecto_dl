@@ -12,10 +12,3 @@
     transition: .35s;
     font-size: 1rem;
 }
-.input input::placeholder {
-    color: #DDD;
-}
-.input input:focus {
-    outline: none;
-    border: 2px solid #007b00;
-}

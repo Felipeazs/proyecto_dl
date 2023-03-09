@@ -27,7 +27,7 @@ function App() {
                         {isLoggedIn &&
                             <>
                                 <Route path='/usuario/:id' element={<Cuenta />} />
-                                <Route path='/resultado/dmec/:id' element={<ResultadoDMEC />} />
+                                <Route path='/resultado/dmec/:n/:id' element={<ResultadoDMEC />} />
                             </>
                         }
                         <Route path='*' element={<NotFound />} />

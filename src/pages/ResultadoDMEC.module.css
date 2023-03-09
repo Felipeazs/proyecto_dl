@@ -9,7 +9,14 @@
     font-size: 1.1rem;
 }
 .resultado .button {
-    position: fixed;
-    top: 20%;
-    left: 15%;
+    display: none;
+}
+
+@media (min-width: 1000px) {
+    .resultado .button {
+        display: inline-block;
+        position: fixed;
+        top: 20%;
+        left: 8%;
+    }
 }
