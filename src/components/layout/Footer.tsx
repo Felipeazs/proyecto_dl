@@ -6,7 +6,6 @@ import Button from '../ui/Button'
 import styles from './Footer.module.css'
 
 const Footer = () => {
-
     const [disabled, setDisabled] = useState<boolean>(true)
     const [email, setEmail] = useState<string>('')
 
@@ -19,28 +18,33 @@ const Footer = () => {
         event.preventDefault()
 
         console.log(email)
-
         setEmail('')
     }
+
     return (
-        <footer className={styles.footer} id='contacto'>
-            <div className='formulario'>
-                <form onSubmit={submitHandler}>
-                    <Input
-                        label='Suscríbete a nuestro newsletter'
-                        type='text'
-                        value={email}
-                        onInputChange={inputChange}
-                        placeholder='Ingresa tu correo'
-                    />
-                    <Button
-                        title='Enviar'
-                        type='submit'
-                        disabled={disabled}
-                    />
+        <>
+            <hr />
+            <footer className={`${styles.footer} container2`} id='contacto'>
+                <form onSubmit={submitHandler} className={styles.formulario}>
+                    <Input label='Suscríbete a nuestro newsletter' type='text' value={email} onInputChange={inputChange} placeholder='Ingresa tu correo' />
+                    <Button title='Enviar' type='submit' disabled={disabled} />
                 </form>
-            </div>
-        </footer>
+                <div className={styles.rrss}>
+                    <div>
+                        <a>Norma BS 8001:2017</a>
+                        <a>Blog</a>
+                    </div>
+                    <div>
+                        <a>Facebook</a>
+                        <a>Instagram</a>
+                        <a>LinkedIn</a>
+                    </div>
+                    <div>
+                        <a>Términos y condiciones</a>
+                    </div>
+                </div>
+            </footer>
+        </>
     )
 }
 

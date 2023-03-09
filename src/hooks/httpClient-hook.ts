@@ -31,6 +31,7 @@ const useHttp = () => {
             .catch((err) => console.log(err))
     }
     const loginUser = async (usuario: { email: string; password: string }) => {
+        console.log(usuario)
         return fetch(`${baseUrl}/api/login`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },

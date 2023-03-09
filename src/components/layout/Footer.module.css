@@ -1,11 +1,29 @@
-footer {
+.footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 15px;
     color: black;
     margin: 5rem 2rem;
 }
-form {
+.formulario {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
-    align-items: flex-start;
+    align-items: flex-end;
+    font-weight: 600;
     gap: 10px;
 }
+.rrss {
+    display: flex;
+    justify-content:center;
+    align-items: flex-start;
+    gap: 80px;
+}
+@media(min-width: 815px){
+    .footer {
+        flex-direction: row
+    }
+}
+
+

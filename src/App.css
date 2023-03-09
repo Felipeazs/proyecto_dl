@@ -41,12 +41,12 @@ ul {
 }
 @media (min-width: 1000px) {
     .container {
-        padding: 6rem 14rem;
+        padding: 10rem 14rem;
     }
 }
 @media (min-width: 1650px) {
     .container {
-        padding: 6rem 28rem;
+        padding: 10rem 28rem;
     }
 }
 
@@ -55,4 +55,10 @@ ul {
     width: 1px;
     height: 80vh;
     margin: 0 5%;
+}
+hr {
+    height: 1px;
+    background-color: #ddd;
+    border-width: 0;
+    color: #ddd;
 }
