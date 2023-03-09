@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect, ChangeEvent, FormEvent } from 'react'
 
 import Button from './ui/Button'
+import Button3 from './ui/Button3'
 
 import styles from './DatosPersonales.module.css'
 
@@ -56,6 +57,10 @@ const DatosPersonales = ({ userData }: { userData: UserDataProps }) => {
         console.log(usuario)
     }
 
+    const cancelarHandler = () => {
+        setTitle('Editar')
+    }
+
     let datos_personales
     if (title === 'Guardar') {
         datos_personales = (
@@ -95,8 +100,10 @@ const DatosPersonales = ({ userData }: { userData: UserDataProps }) => {
                     {datos_personales}
                 </>
             )}
-
-            <Button title={title} type={title === 'Editar' ? 'button' : 'submit'} clickHandler={clickHandler} />
+            <div className={styles.buttons}>
+                <Button title={title} type={title === 'Editar' ? 'button' : 'submit'} clickHandler={clickHandler} />
+                {title === 'Guardar' && <Button3 title='Cancelar' type='button' clickHandler={cancelarHandler} />}
+            </div>
         </div>
     )
 }

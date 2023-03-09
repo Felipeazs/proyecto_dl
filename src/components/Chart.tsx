@@ -27,8 +27,8 @@ const Chart = ({ puntajeTotal, porcentajeTotal }: { puntajeTotal: number; porcen
             {
                 label: 'Porcentaje total',
                 data: [porcentajeTotal, 100 - porcentajeTotal],
-                backgroundColor: ['rgba(255, 206, 86, 0.2)', 'rgba(75, 192, 192, 0.2)'],
-                borderColor: ['rgba(255, 206, 86, 0.2)', 'rgba(75, 192, 192, 0.2)'],
+                backgroundColor: ['rgba(75, 192, 192, 0.2)', 'rgba(255, 99, 132, 0.2)'],
+                borderColor: ['rgba(75, 192, 192, 0.2)', 'rgba(255, 99, 132, 0.2)'],
                 borderWidth: 1,
             },
         ],

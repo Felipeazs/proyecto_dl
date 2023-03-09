@@ -5,5 +5,11 @@
     border-radius: 5px;
 }
 .caracteristicas p {
-    line-height: 1rem;
+    line-height: 1.2rem;
+    font-size: 1.1rem;
+}
+.resultado .button {
+    position: fixed;
+    top: 20%;
+    left: 15%;
 }
