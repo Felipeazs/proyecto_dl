@@ -47,7 +47,7 @@ ul {
 }
 @media (min-width: 1650px) {
     .container {
-        padding: 10rem 28rem;
+        padding: 10rem 18rem;
     }
 }
 
@@ -64,7 +64,7 @@ hr {
     color: #ddd;
 }
 input::placeholder {
-    color: #DDD;
+    color: #ddd;
 }
 input:focus {
     outline: none;

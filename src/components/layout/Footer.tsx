@@ -33,6 +33,7 @@ const Footer = () => {
                     <div>
                         <a>Norma BS 8001:2017</a>
                         <a>Blog</a>
+                        <a>Recursos Externos</a>
                     </div>
                     <div>
                         <a>Facebook</a>
@@ -41,6 +42,10 @@ const Footer = () => {
                     </div>
                     <div>
                         <a>Términos y condiciones</a>
+                        <a>Políticas de privacidad</a>
+                        <a>Políticas de cookies</a>
+                        <a>Preguntas frecuentes</a>
+                        <a>Contáctanos</a>
                     </div>
                 </div>
             </footer>
