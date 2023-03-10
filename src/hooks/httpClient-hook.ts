@@ -19,6 +19,7 @@ interface UsuarioTypes {
 
 const useHttp = () => {
     const getUser = async (id: string, token: string): Promise<UsuarioTypes> => {
+        console.log(id)
         return fetch(`${baseUrl}/api/usuario/${id}`, {
             method: 'GET',
             headers: { 'Authorization': `Bearer ${token}` },
@@ -48,28 +49,40 @@ const useHttp = () => {
             .then((data) => data)
             .catch((err) => console.log(err))
     }
+    const updateUser = async (usuario: { nombre?: string; apellidos?: string; email?: string; telefono?: string }, usuarioId: string, token: string) => {
+        return fetch(`${baseUrl}/api/usuario/${usuarioId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
+            },
+            body: JSON.stringify(usuario),
+        })
+            .then((res) => res.json())
+            .then((data) => data)
+            .catch((err) => console.log(err))
+    }
     const postDiagnostico = async (usuarioId: string, token: string, diagnostico: any) => {
         return fetch(`${baseUrl}/api/usuario/${usuarioId}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${token}`,
             },
             body: JSON.stringify(diagnostico),
         })
-            .then(res => res.json())
-            .then(data => data)
+            .then((res) => res.json())
+            .then((data) => data)
             .catch((err) => console.log(err))
     }
-
 
     const getDiagnosticos = async (usuarioId: string, token: string): Promise<{ diagnostico_encontrado: DataTypes[] }> => {
         return fetch(`${baseUrl}/api/usuario/${usuarioId}/diagnosticos`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            }
+                'Authorization': `Bearer ${token}`,
+            },
         })
             .then((res) => res.json())
             .then((data) => data)
@@ -81,8 +94,21 @@ const useHttp = () => {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            }
+                'Authorization': `Bearer ${token}`,
+            },
+        })
+            .then((res) => res.json())
+            .then((data) => data)
+            .catch((err) => console.log(err))
+    }
+
+    const deleteDiagnostico = async (usuarioId: string, token: string, diagnosticoId: string) => {
+        return fetch(`${baseUrl}/api/usuario/${usuarioId}/diagnostico/${diagnosticoId}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
+            },
         })
             .then((res) => res.json())
             .then((data) => data)
@@ -93,9 +119,11 @@ const useHttp = () => {
         signupUser,
         loginUser,
         getUser,
+        updateUser,
         postDiagnostico,
         getDiagnosticos,
-        getDiagnostico
+        getDiagnostico,
+        deleteDiagnostico,
     }
 }
 

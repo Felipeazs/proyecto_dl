@@ -3,8 +3,7 @@ import { useNavigate } from 'react-router-dom'
 
 import UsuarioContext from '../context/user-context'
 
-import { ToastContainer, toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
+import { toast } from 'react-toastify'
 
 import useHttp from '../hooks/httpClient-hook'
 
@@ -95,7 +94,6 @@ const Login = () => {
 
     return (
         <div className={`${styles.login} container`}>
-            <ToastContainer />
             <form onSubmit={loginHandler} className={styles.datos}>
                 <h2>Ingresa a tu cuenta</h2>
                 <Input type='text' name='email' label='Usuario' placeholder='Ingresa tu email' onInputChange={inputChange} />

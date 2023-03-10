@@ -27,7 +27,6 @@ const DMEC = ({ data }: { data: DataTypes[] }) => {
         navigate('/diagnostico')
     }
 
-
     return (
         <div className={styles.dmec}>
             <Tooltip id='pa' />
@@ -37,6 +36,7 @@ const DMEC = ({ data }: { data: DataTypes[] }) => {
                     <tr>
                         <th>#</th>
                         <th>id</th>
+                        <th>proyecto</th>
                         <th data-tooltip-id='pa' data-tooltip-content='max: 36' data-tooltil-place='top'>
                             puntaje
                         </th>
@@ -54,6 +54,9 @@ const DMEC = ({ data }: { data: DataTypes[] }) => {
                         <tr key={i} onClick={() => resultadoHandler(d._id, i + 1)}>
                             <td>{i + 1}</td>
                             <td>{d._id}</td>
+                            <td>
+                                <span>{d.respuestas[1]}</span>
+                            </td>
                             <td>{d.puntajeTotal}</td>
                             <td>{`${d.porcentajeTotal}%`}</td>
                             <td>{d.nivelMadurez ? d.nivelMadurez : 'nn'}</td>

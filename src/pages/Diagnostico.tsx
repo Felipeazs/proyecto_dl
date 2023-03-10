@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext, useRef, FormEvent, ChangeEvent, MutableRefObject } from 'react'
+
 import { useNavigate } from 'react-router-dom'
 import useWindowSize from '../utils/Windows'
 
@@ -9,6 +10,7 @@ import Input3 from '../components/ui/Input3'
 import Radio from '../components/ui/Radio'
 import Checkbox from '../components/ui/Checkbox'
 import Button from '../components/ui/Button'
+import Button3 from '../components/ui/Button3'
 import styles from './Diagnostico.module.css'
 
 import Confetti from 'react-confetti'
@@ -268,7 +270,7 @@ const Diagnostico = () => {
 
         const trues = updateCheckState.filter((i) => i === true)
         if (value === 'Ninguno') {
-            setIsP9Checked([false, false, false, true])
+            setIsP9Checked([false, false, true])
             setPuntajeTotal(puntajeTotal - trues.length)
 
             setRespuestas((prevState) => {
@@ -309,7 +311,7 @@ const Diagnostico = () => {
 
         const trues = updateCheckState.filter((i) => i === true)
         if (value === 'Ninguno') {
-            setIsP10Checked([false, false, false, true])
+            setIsP10Checked([false, false, true])
             setPuntajeTotal(puntajeTotal - trues.length)
 
             setRespuestas((prevState) => {
@@ -350,7 +352,7 @@ const Diagnostico = () => {
 
         const trues = updateCheckState.filter((i) => i === true)
         if (value === 'Ninguno') {
-            setIsP11Checked([false, false, false, true])
+            setIsP11Checked([false, false, false, false, true])
             setPuntajeTotal(puntajeTotal - trues.length)
 
             setRespuestas((prevState) => {
@@ -391,7 +393,7 @@ const Diagnostico = () => {
 
         const trues = updateCheckState.filter((i) => i === true)
         if (value === 'Ninguno') {
-            setIsP12Checked([false, false, false, true])
+            setIsP12Checked([false, false, false, false, false, false, false, false, false, true])
             setPuntajeTotal(puntajeTotal - trues.length)
 
             setRespuestas((prevState) => {
@@ -473,7 +475,7 @@ const Diagnostico = () => {
 
         const trues = updateCheckState.filter((i) => i === true)
         if (value === 'Ninguno') {
-            setIsP14Checked([false, false, false, true])
+            setIsP14Checked([false, false, true])
             setPuntajeTotal(puntajeTotal - trues.length)
 
             setRespuestas((prevState) => {
@@ -514,7 +516,7 @@ const Diagnostico = () => {
 
         const trues = updateCheckState.filter((i) => i === true)
         if (value === 'Ninguno') {
-            setIsP15Checked([false, false, false, true])
+            setIsP15Checked([false, false, false, false, false, false, true])
             setPuntajeTotal(puntajeTotal - trues.length)
 
             setRespuestas((prevState) => {
@@ -554,8 +556,8 @@ const Diagnostico = () => {
         })
 
         const trues = updateCheckState.filter((i) => i === true)
-        if (value === 'Ninguno') {
-            setIsP16Checked([false, false, false, true])
+        if (value === 'No') {
+            setIsP16Checked([false, true])
             setPuntajeTotal(puntajeTotal - trues.length)
 
             setRespuestas((prevState) => {
@@ -576,6 +578,8 @@ const Diagnostico = () => {
         updateCheckState[updateCheckState.length - 1] = false
         setIsP17Checked(updateCheckState)
 
+        console.log(updateCheckState)
+
         let p: string[]
         if (checked) {
             p = [...p17, value]
@@ -595,8 +599,8 @@ const Diagnostico = () => {
         })
 
         const trues = updateCheckState.filter((i) => i === true)
-        if (value === 'Ninguno') {
-            setIsP17Checked([false, false, false, true])
+        if (value === 'No') {
+            setIsP17Checked([false, true])
             setPuntajeTotal(puntajeTotal - trues.length)
 
             setRespuestas((prevState) => {
@@ -619,49 +623,49 @@ const Diagnostico = () => {
             setPrimerAnalisis(mensajes[1])
             setPrevItem(3)
             setIsItem(11)
-            formRef.current!.dispatchEvent(new Event("submit", { cancelable: true, bubbles: true }))
+            formRef.current!.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }))
         } else if (isItem === 4 && puntajeTotal < 6) {
             setTitulo('Nivel 2: Búsqueda')
             setPrimerAnalisis(mensajes[2])
             setPrevItem(4)
             setIsItem(11)
-            formRef.current!.dispatchEvent(new Event("submit", { cancelable: true, bubbles: true }))
+            formRef.current!.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }))
         } else if (isItem === 5 && puntajeTotal < 8) {
             setTitulo('Nivel 3: Generación de Ideas')
             setPrimerAnalisis(mensajes[3])
             setPrevItem(5)
             setIsItem(11)
-            formRef.current!.dispatchEvent(new Event("submit", { cancelable: true, bubbles: true }))
+            formRef.current!.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }))
         } else if (isItem === 6 && puntajeTotal < 10) {
             setTitulo('Nivel 4: Factibilidad')
             setPrimerAnalisis(mensajes[4])
             setPrevItem(6)
             setIsItem(11)
-            formRef.current!.dispatchEvent(new Event("submit", { cancelable: true, bubbles: true }))
+            formRef.current!.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }))
         } else if (isItem === 7 && puntajeTotal < 23) {
             setTitulo('Nivel 5: Caso de Negocio')
             setPrimerAnalisis(mensajes[5])
             setPrevItem(7)
             setIsItem(11)
-            formRef.current!.dispatchEvent(new Event("submit", { cancelable: true, bubbles: true }))
+            formRef.current!.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }))
         } else if (isItem === 8 && puntajeTotal < 26) {
             setTitulo('Nivel 6: Pilotaje - Prototipaje')
             setPrimerAnalisis(mensajes[6])
             setPrevItem(8)
             setIsItem(11)
-            formRef.current!.dispatchEvent(new Event("submit", { cancelable: true, bubbles: true }))
+            formRef.current!.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }))
         } else if (isItem === 9 && puntajeTotal < 28) {
             setTitulo('Nivel 7: Implementación')
             setPrimerAnalisis(mensajes[7])
             setPrevItem(9)
             setIsItem(11)
-            formRef.current!.dispatchEvent(new Event("submit", { cancelable: true, bubbles: true }))
+            formRef.current!.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }))
         } else if (isItem === 10 && puntajeTotal >= 28) {
             setTitulo('Nivel 8: Monitoreo, Reporte y Revisión')
             setPrimerAnalisis(mensajes[8])
             setPrevItem(10)
             setIsItem(11)
-            formRef.current!.dispatchEvent(new Event("submit", { cancelable: true, bubbles: true }))
+            formRef.current!.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }))
         } else {
             setPrevItem(isItem)
             setIsItem(isItem + 1)
@@ -674,12 +678,14 @@ const Diagnostico = () => {
         const nivelMadurez = prevItem - 1
 
         const diagnostico = {
-            puntajeTotal, porcentajeTotal: (+puntajeTotal / 36 * 100).toFixed(0), nivelMadurez, respuestas
+            puntajeTotal,
+            porcentajeTotal: ((+puntajeTotal / 36) * 100).toFixed(0),
+            nivelMadurez,
+            respuestas,
         }
 
         await postDiagnostico(userId, token, diagnostico)
     }
-
 
     return (
         <div className={`${styles.diagnostico} container`}>
@@ -777,11 +783,10 @@ const Diagnostico = () => {
                             <p className={styles.titulo}>{titulo}</p>
                             <p className={styles.analisis}>{primerAnalisis}</p>
                         </div>
+                        <Button3 title="Ir a la cuenta" type="button" clickHandler={() => { navigate(`/usuario/:${userId}`) }} />
                     </div>
                 )}
-                <div className={styles.buttons}>
-                    {isItem !== 11 && <Button title='Siguiente' type='button' clickHandler={buttonClickHandler} />}
-                </div>
+                <div className={styles.buttons}>{isItem !== 11 && <Button title='Siguiente' type='button' clickHandler={buttonClickHandler} />}</div>
             </form>
         </div>
     )

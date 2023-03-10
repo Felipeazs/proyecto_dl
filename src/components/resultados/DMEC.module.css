@@ -18,6 +18,12 @@
     background: #738290;
     cursor: pointer;
 }
+.dmec span {
+    text-align: center;
+    display: block;
+    line-height: 1.5rem;
+    word-wrap: break-word;
+}
 .dmec .button {
     display: none;
 }

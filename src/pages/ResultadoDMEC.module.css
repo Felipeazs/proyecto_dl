@@ -11,6 +11,22 @@
 .resultado .button {
     display: none;
 }
+.resultado .header {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 50px;
+}
+.resultado .graficos {
+    display: flex;
+    flex-direction: column;
+}
+
+@media(min-width: 600px){
+    .resultado .graficos {
+            flex-direction: row;
+        }
+}
 
 @media (min-width: 1000px) {
     .resultado .button {

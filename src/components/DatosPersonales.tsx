@@ -1,4 +1,10 @@
-import React, { useState, useRef, useEffect, ChangeEvent, FormEvent } from 'react'
+import React, { useState, useRef, useEffect, useContext, ChangeEvent, FormEvent } from 'react'
+
+import { toast } from 'react-toastify'
+import { Dna } from 'react-loader-spinner'
+
+import useHttp from '../hooks/httpClient-hook'
+import GlobalContext from '../context/user-context'
 
 import Button from './ui/Button'
 import Button3 from './ui/Button3'
@@ -12,27 +18,39 @@ interface UserDataProps {
     telefono: string
 }
 
-const DatosPersonales = ({ userData }: { userData: UserDataProps }) => {
+const DatosPersonales = () => {
+    const { userId, token } = useContext(GlobalContext)
+    const { updateUser, getUser } = useHttp()
     const formRef = useRef<HTMLFormElement>(null)
     const [usuario, setUsuario] = useState({ nombre: '', apellidos: '', email: '', telefono: '' })
     const [title, setTitle] = useState<string>('Editar')
+    const [loading, setLoading] = useState<boolean>(true)
 
     useEffect(() => {
-        if (userData.email) {
-            setUsuario({
-                nombre: userData.nombre,
-                apellidos: userData.apellidos,
-                email: userData.email,
-                telefono: userData.telefono,
-            })
+        const fetching = async () => {
+            console.log(userId)
+            const resultado = await getUser(userId, token)
+            console.log(resultado)
+            setUsuario({ nombre: resultado.nombre, apellidos: resultado.apellidos, email: resultado.email, telefono: resultado.telefono })
+
+            setLoading(false)
         }
+        fetching()
     }, [])
 
+
     const { nombre, apellidos, email, telefono } = usuario
+    console.log(email)
+
+    if (loading) {
+        return (
+            <div className='container'>
+                <Dna visible={true} height='80' width='80' ariaLabel='dna-loading' wrapperStyle={{}} wrapperClass='dna-wrapper' />
+            </div>
+        )
+    }
 
     const clickHandler = () => {
-        console.log('editar usuario')
-        //TODO: Guardar nuevos datos del usuario en bd
 
         if (title === 'Editar') {
             setTitle('Guardar')
@@ -51,10 +69,22 @@ const DatosPersonales = ({ userData }: { userData: UserDataProps }) => {
         })
     }
 
-    const submitHandler = (event: FormEvent<HTMLFormElement>) => {
+    const submitHandler = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault()
 
-        console.log(usuario)
+        setLoading(true)
+        const resultado = await updateUser(usuario, userId, token)
+        const usuario_updated = {
+            nombre: resultado.usuario.nombre,
+            apellidos: resultado.usuario.apellidos,
+            email: resultado.usuario.email,
+            telefono: resultado.usuario.telefono,
+        }
+
+        setUsuario(usuario_updated)
+        setLoading(false)
+
+        toast.success('Datos personales actualizados')
     }
 
     const cancelarHandler = () => {
@@ -94,7 +124,7 @@ const DatosPersonales = ({ userData }: { userData: UserDataProps }) => {
 
     return (
         <div className={styles.datos}>
-            {userData && (
+            {usuario && (
                 <>
                     <h2>Datos Personales</h2>
                     {datos_personales}

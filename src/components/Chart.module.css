@@ -1,14 +1,14 @@
 .grafico {
-    padding-top: 50px;
     position: relative;
-    width: 450px;
+    padding-top: 50px;
+    min-width: 50%;
     margin: auto;
 }
 .grafico .contenido {
     position: absolute;
-    top: 33%;
-    left: 32%;
-    line-height: 1rem;
-    font-size: 300%;
+    top: 20%;
+    left: 25%;
+    line-height: 0rem;
     font-weight: 800;
+    text-transform: uppercase;
 }

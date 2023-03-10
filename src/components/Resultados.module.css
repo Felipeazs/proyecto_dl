@@ -22,7 +22,6 @@ ul {
 .contenido {
     width: 90%;
     border-radius: 5px;
-    white-space: nowrap;
     border: 1px solid #82bb85;
     padding: 3%;
     overflow: auto;

@@ -8,7 +8,7 @@ ChartJS.register(ArcElement, Tooltip, Legend)
 ChartJS.defaults.maintainAspectRatio = true
 ChartJS.defaults.plugins.legend.display = false
 
-const Chart = ({ puntajeTotal, porcentajeTotal }: { puntajeTotal: number; porcentajeTotal: number }) => {
+const Chart = ({ porcentajeTotal }: { porcentajeTotal: number }) => {
     // const dataPuntaje = {
     //     labels: ['puntaje', 'total'],
     //     datasets: [
@@ -22,7 +22,7 @@ const Chart = ({ puntajeTotal, porcentajeTotal }: { puntajeTotal: number; porcen
     //     ],
     // }
     const dataPorcentaje = {
-        labels: ['', ''],
+        labels: [],
         datasets: [
             {
                 label: 'Porcentaje total',
@@ -37,8 +37,8 @@ const Chart = ({ puntajeTotal, porcentajeTotal }: { puntajeTotal: number; porcen
         <div className={styles.grafico}>
             <Doughnut data={dataPorcentaje} />
             <div className={styles.contenido}>
-                <h1>{porcentajeTotal}</h1>
-                <p>% Total</p>
+                <span>Avance: </span>
+                <span>{porcentajeTotal}%</span>
             </div>
         </div>
     )
