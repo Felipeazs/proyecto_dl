@@ -94,6 +94,7 @@ const Login = () => {
 
     return (
         <div className={`${styles.login} container`}>
+            <div className={styles.background}></div>
             <form onSubmit={loginHandler} className={styles.datos}>
                 <h2>Ingresa a tu cuenta</h2>
                 <Input type='text' name='email' label='Usuario' placeholder='Ingresa tu email' onInputChange={inputChange} />
