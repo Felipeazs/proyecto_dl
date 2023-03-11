@@ -4,6 +4,8 @@ import { Scatter } from 'react-chartjs-2'
 
 ChartJS.register(...registerables)
 
+import styles from './Seguimiento.module.css'
+
 interface DataTypes {
     _id: string
     puntajeTotal: number
@@ -83,8 +85,9 @@ const Seguimiento = ({ data }: { data: DataTypes[] }) => {
         ]
     }
     return (
-        <div>
-            <Scatter options={options} data={scatterData} />
+        <div className={styles.scatter}>
+            {/*// @ts-ignore */}
+            <Scatter options={options} data={scatterData} className={styles.scatter} />
         </div>
     )
 }
