@@ -28,7 +28,7 @@ const Resultados = ({ data }: { data: DataTypes[] }) => {
         case 'dmec':
             contenido = <DMEC data={data} />
             break
-        case 'analisis2':
+        case 'seguimiento':
             contenido = <Analisis2 />
             break
         case 'analisis3':
@@ -41,9 +41,9 @@ const Resultados = ({ data }: { data: DataTypes[] }) => {
             <h2>Diagnósticos</h2>
             <div>
                 <ul className={styles.tabs}>
-                    <li onClick={() => clickHandler('dmec')}>DMEC</li>
-                    <li onClick={() => clickHandler('analisis2')}>ANALISIS 2</li>
-                    <li onClick={() => clickHandler('analisis3')}>ANALISIS 3</li>
+                    <li className={tabs === 'dmec' ? styles.active : ''} onClick={() => clickHandler('dmec')}>DMEC</li>
+                    <li className={tabs === 'seguimiento' ? styles.active : ''} onClick={() => clickHandler('seguimiento')}>SEGUIMIENTO</li>
+                    <li className={tabs === 'analisis3' ? styles.active : ''} onClick={() => clickHandler('analisis3')}>ANALISIS 3</li>
                 </ul>
             </div>
             <div className={styles.contenido}>

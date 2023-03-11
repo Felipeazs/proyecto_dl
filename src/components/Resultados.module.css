@@ -27,6 +27,11 @@ ul {
     overflow: auto;
     max-height: 50vh;
 }
+.tabs .active {
+    background-color: #80DA83;
+    color: white;
+    font-weight: 800;
+}
 
 @media (min-width: 930px) {
     .contenido {

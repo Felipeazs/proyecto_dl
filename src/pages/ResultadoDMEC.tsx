@@ -29,8 +29,6 @@ const ResultadoDMEC = () => {
         const fetching = async () => {
             const { diagnostico } = await getDiagnostico(userId, token, id)
             setDiagnostico(diagnostico)
-
-            console.log(diagnostico)
         }
         fetching()
     }, [id])

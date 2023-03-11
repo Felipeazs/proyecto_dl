@@ -6,7 +6,6 @@ import useWindowSize from '../utils/Windows'
 import UsuarioContext from '../context/user-context'
 import useHttp from '../hooks/httpClient-hook'
 
-import Input3 from '../components/ui/Input3'
 import Radio from '../components/ui/Radio'
 import Checkbox from '../components/ui/Checkbox'
 import Button from '../components/ui/Button'
@@ -21,8 +20,9 @@ import mensajes from '../assets/resultados.json'
 const Diagnostico = () => {
     const formRef = useRef<HTMLFormElement>(null)
     const navigate = useNavigate()
-    const { postDiagnostico } = useHttp()
+    const { postDiagnostico, getDiagnosticos } = useHttp()
     const { isLoggedIn, userId, token } = useContext(UsuarioContext)
+    const [proyectos, setProyectos] = useState([])
     const [isItem, setIsItem] = useState(1)
     const [titulo, setTitulo] = useState('')
     const [prevItem, setPrevItem] = useState(0)
@@ -62,10 +62,17 @@ const Diagnostico = () => {
     useEffect(() => {
         if (!isLoggedIn) {
             navigate('/login')
+            return
         }
+
+        const fetching = async () => {
+            const { diagnostico_encontrado } = await getDiagnosticos(userId, token)
+            setProyectos(diagnostico_encontrado)
+        }
+        fetching()
     }, [])
 
-    const inputHandler = (event: ChangeEvent<HTMLInputElement>) => {
+    const inputHandler = (event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>) => {
         const { name, value } = event.target
         setRespuestas((prevState) => {
             return {
@@ -696,7 +703,21 @@ const Diagnostico = () => {
                         <br />
                         <br />
                         <br />
-                        <Input3 pregunta={data[1].pregunta} opciones={data[1].opciones} id={data[1].id} onChange={inputHandler} />
+                        <div className={styles.input_nuevo}>
+                            <label htmlFor="">1. Selecciona el proyecto que deseas reevaluar o escribe el nombre del nuevo proyecto:</label>
+                            <select name="1" onChange={inputHandler}>
+                                <option value={new Date().toLocaleDateString()}>Selecciona un proyecto</option>
+                                {proyectos
+                                    .map((d) => d.respuestas[1])
+                                    .filter((item, index, arr) => arr.indexOf(item) === index)
+                                    .map((f, i) => (
+                                        <option value={f} key={i}>
+                                            {f}
+                                        </option>
+                                    ))}
+                            </select>
+                            <input type="text" name="1" placeholder="Nombre nuevo proyecto" onChange={inputHandler} />
+                        </div>
                         <Radio pregunta={data[2].pregunta} opciones={data[2].opciones} id={data[2].id} onChange={radioHandler} />
                         <Radio pregunta={data[3].pregunta} opciones={data[3].opciones} id={data[3].id} onChange={radioHandler} />
                         <Radio pregunta={data[4].pregunta} opciones={data[4].opciones} id={data[4].id} onChange={radioHandler} />

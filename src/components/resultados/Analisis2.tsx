@@ -3,7 +3,7 @@ import React from 'react'
 const Analisis2 = () => {
     return (
         <div>
-            <h3>Analisis 2</h3>
+            <h3>Gráfico de seguimiento</h3>
         </div>
     )
 }

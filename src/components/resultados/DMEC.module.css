@@ -27,6 +27,12 @@
 .dmec .button {
     display: none;
 }
+.dmec .seleccion {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 5%;
+}
 @media (min-width: 497px) {
     .dmec .button {
         display: inline-block;
