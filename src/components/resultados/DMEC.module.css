@@ -1,5 +1,8 @@
 .dmec {
     overflow-x: auto;
+    display: flex;
+    flex-direction: column;
+    gap:40px;
 }
 .dmec table {
     table-layout: fixed;
@@ -24,21 +27,21 @@
     line-height: 1.5rem;
     word-wrap: break-word;
 }
-.dmec .button {
-    display: none;
-}
 .dmec .seleccion {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     padding: 5%;
 }
+.dmec .titulo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
 @media (min-width: 497px) {
     .dmec .button {
         display: inline-block;
-        position: absolute;
-        top: 270px;
-        right: 2%;
     }
 }
 @media (min-width: 929px) {

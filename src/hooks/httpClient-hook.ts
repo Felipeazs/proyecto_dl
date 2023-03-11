@@ -19,7 +19,6 @@ interface UsuarioTypes {
 
 const useHttp = () => {
     const getUser = async (id: string, token: string): Promise<UsuarioTypes> => {
-        console.log(id)
         return fetch(`${baseUrl}/api/usuario/${id}`, {
             method: 'GET',
             headers: { 'Authorization': `Bearer ${token}` },
@@ -39,7 +38,6 @@ const useHttp = () => {
             .catch((err) => console.log(err))
     }
     const loginUser = async (usuario: { email: string; password: string }) => {
-        console.log(usuario)
         return fetch(`${baseUrl}/api/login`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },

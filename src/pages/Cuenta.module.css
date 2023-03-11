@@ -11,6 +11,7 @@
 }
 .cuenta .panel_principal {
     width: 90%;
+    min-height: 50vh;
 }
 .cuenta .divisor_vertical {
     display: none;

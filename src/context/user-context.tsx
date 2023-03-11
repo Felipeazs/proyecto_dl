@@ -1,5 +1,7 @@
 import { useState, createContext, useEffect, useCallback, PropsWithChildren } from 'react'
 
+let logoutTimer
+
 const UsuarioContext = createContext({
     isLoggedIn: false,
     userId: '',
@@ -14,7 +16,6 @@ export const UsuarioProvider = ({ children }: PropsWithChildren) => {
     const [tokenExpirationDate, setTokenExpirationDate] = useState<Date>()
 
     const loginData = useCallback((usuarioId: string, token: string, expirationDate?: Date) => {
-
         setUserId(usuarioId)
         setToken(token)
 
@@ -40,6 +41,15 @@ export const UsuarioProvider = ({ children }: PropsWithChildren) => {
         }
 
     }, [loginData])
+
+    useEffect(() => {
+        if (token && tokenExpirationDate) {
+            const remainingTime = tokenExpirationDate.getTime() - new Date().getTime()
+            logoutTimer = setTimeout(logout, remainingTime)
+        } else {
+            clearTimeout((logoutTimer))
+        }
+    }, [token, loginData, logout, userId])
 
     return (
         <UsuarioContext.Provider value={{ isLoggedIn: !!token, userId, token, loginData, logout }}>

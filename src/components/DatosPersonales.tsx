@@ -28,9 +28,7 @@ const DatosPersonales = () => {
 
     useEffect(() => {
         const fetching = async () => {
-            console.log(userId)
             const resultado = await getUser(userId, token)
-            console.log(resultado)
             setUsuario({ nombre: resultado.nombre, apellidos: resultado.apellidos, email: resultado.email, telefono: resultado.telefono })
 
             setLoading(false)
@@ -40,7 +38,6 @@ const DatosPersonales = () => {
 
 
     const { nombre, apellidos, email, telefono } = usuario
-    console.log(email)
 
     if (loading) {
         return (

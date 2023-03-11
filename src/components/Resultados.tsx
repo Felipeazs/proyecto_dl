@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, ChangeEvent } from 'react'
 
 import DMEC from './resultados/DMEC'
-import Analisis2 from './resultados/Analisis2'
+import Seguimiento from './resultados/Seguimiento'
 import Analisis3 from './resultados/Analisis3'
 
 import styles from './Resultados.module.css'
@@ -18,6 +18,7 @@ interface DataTypes {
 
 const Resultados = ({ data }: { data: DataTypes[] }) => {
     const [tabs, setTabs] = useState('dmec')
+    const [selection, setSelection] = useState<DataTypes[]>([])
 
     const clickHandler = (tab: string) => {
         setTabs(tab)
@@ -26,28 +27,48 @@ const Resultados = ({ data }: { data: DataTypes[] }) => {
     let contenido
     switch (tabs) {
         case 'dmec':
-            contenido = <DMEC data={data} />
+            contenido = <DMEC data={selection} />
             break
         case 'seguimiento':
-            contenido = <Analisis2 />
+            contenido = <Seguimiento data={selection} />
             break
         case 'analisis3':
             contenido = <Analisis3 />
             break
     }
 
+    const selectHandler = (event: ChangeEvent<HTMLSelectElement>) => {
+        const proyecto = data.filter((d) => d.respuestas[1] === event.target.value)
+        setSelection(proyecto)
+    }
+
     return (
-        <div>
-            <h2>Diagnósticos</h2>
-            <div>
-                <ul className={styles.tabs}>
-                    <li className={tabs === 'dmec' ? styles.active : ''} onClick={() => clickHandler('dmec')}>DMEC</li>
-                    <li className={tabs === 'seguimiento' ? styles.active : ''} onClick={() => clickHandler('seguimiento')}>SEGUIMIENTO</li>
-                    <li className={tabs === 'analisis3' ? styles.active : ''} onClick={() => clickHandler('analisis3')}>ANALISIS 3</li>
-                </ul>
+        <div className={styles.resultados}>
+            <div className={styles.seleccion}>
+                <h2>Diagnósticos</h2>
+                <select name='proyectos' id='proyectos' onChange={selectHandler}>
+                    <option>Selecciona un proyecto</option>
+                    {data
+                        .map((d) => d.respuestas[1])
+                        .filter((item, index, arr) => arr.indexOf(item) === index)
+                        .map((f, i) => (
+                            <option value={f} key={i}>
+                                {f}
+                            </option>
+                        ))}
+                </select>
             </div>
-            <div className={styles.contenido}>
-                {contenido}
+            <div>
+                <div>
+                    <ul className={styles.tabs}>
+                        <li className={tabs === 'dmec' ? styles.active : ''} onClick={() => clickHandler('dmec')}>DMEC</li>
+                        <li className={tabs === 'seguimiento' ? styles.active : ''} onClick={() => clickHandler('seguimiento')}>SEGUIMIENTO</li>
+                        <li className={tabs === 'analisis3' ? styles.active : ''} onClick={() => clickHandler('analisis3')}>ANALISIS 3</li>
+                    </ul>
+                </div>
+                <div className={styles.contenido}>
+                    {contenido}
+                </div>
             </div>
         </div>
 

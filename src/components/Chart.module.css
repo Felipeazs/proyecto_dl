@@ -1,7 +1,8 @@
 .grafico {
     position: relative;
     padding-top: 50px;
-    min-width: 50%;
+    min-width: 40%;
+    max-width: 50%;
     margin: auto;
 }
 .grafico .contenido {

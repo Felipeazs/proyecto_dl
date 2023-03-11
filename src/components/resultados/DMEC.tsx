@@ -1,5 +1,5 @@
-import React, { useState, useEffect, ChangeEvent } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import Button from '../ui/Button'
 
@@ -18,7 +18,10 @@ interface DataTypes {
 }
 const DMEC = ({ data }: { data: DataTypes[] }) => {
     const navigate = useNavigate()
-    const [selection, setSelection] = useState<DataTypes[]>([])
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
 
     const resultadoHandler = (id: string, n: number) => {
         navigate(`/resultado/dmec/${n}/${id}`)
@@ -28,29 +31,15 @@ const DMEC = ({ data }: { data: DataTypes[] }) => {
         navigate('/diagnostico')
     }
 
-    const selectHandler = (event: ChangeEvent<HTMLSelectElement>) => {
-        const proyecto = data.filter((d) => d.respuestas[1] === event.target.value)
-        setSelection(proyecto)
-    }
 
     return (
         <div className={styles.dmec}>
             <Tooltip id='pa' />
-            <h3>Diagnóstico de madurez en economía circular</h3>
-            <div className={styles.seleccion}>
-                <select name='proyectos' id='proyectos' onChange={selectHandler}>
-                    <option>Selecciona un proyecto</option>
-                    {data
-                        .map((d) => d.respuestas[1])
-                        .filter((item, index, arr) => arr.indexOf(item) === index)
-                        .map((f, i) => (
-                            <option value={f} key={i}>
-                                {f}
-                            </option>
-                        ))}
-                </select>
+            <div className={styles.titulo}>
+                <h3>Diagnóstico de madurez en economía circular</h3>
+                <Button type='button' title='Realizar DMEC' className={styles.button} clickHandler={dmecHandler} />
             </div>
-            {selection.length > 0 ? (
+            {data.length > 0 ? (
                 <table>
                     <thead>
                         <tr>
@@ -70,7 +59,7 @@ const DMEC = ({ data }: { data: DataTypes[] }) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {selection.map((d, i) => (
+                        {data.map((d, i) => (
                             <tr key={i} onClick={() => resultadoHandler(d._id, i + 1)}>
                                 <td>{i + 1}</td>
                                 <td>{d._id}</td>
@@ -88,7 +77,6 @@ const DMEC = ({ data }: { data: DataTypes[] }) => {
             ) : (
                 <p>📃 Ningún proyecto ha sido seleccionado</p>
             )}
-            <Button type='button' title='Realizar DMEC' className={styles.button} clickHandler={dmecHandler} />
         </div>
     )
 }

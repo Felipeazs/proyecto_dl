@@ -14,7 +14,7 @@ body {
 .container {
     margin-top: 3rem;
     padding: 6rem 1rem;
-    min-height: 100vh;
+    min-height: 50vh;
 }
 .container_2 {
     margin-top: 3rem;
