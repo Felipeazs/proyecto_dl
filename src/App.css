@@ -32,30 +32,22 @@ ul {
     line-height: 1.25em;
 }
 
-@media (min-width: 700px) {
-    .container {
-        padding: 6rem 4rem;
-    }
-    .container_2 {
-        padding: 6rem 5rem;
-    }
-}
-@media (min-width: 1000px) {
-    .container {
-        padding: 10rem 14rem;
-    }
-}
-@media (min-width: 1650px) {
-    .container {
-        padding: 10rem 18rem;
-    }
-}
 
 .divisor_vertical {
-    background-color: #ddd;
-    width: 1px;
-    height: 80vh;
-    margin: 0 5%;
+    display: none;
+}
+a {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 500;
+    line-height: 2.5rem;
+    color: black;
+    text-decoration: none;
+}
+a:hover {
+    cursor: pointer;
+    color: #80DA83;
+    text-decoration-line: none;
 }
 hr {
     height: 1px;
@@ -78,4 +70,28 @@ select {
     padding: 1%;
     min-width: 250px;
     font-size: 1.1rem;
+}
+
+@media (min-width: 530px) {
+    .divisor_vertical {
+        display: inline-block;
+        background-color: #ddd;
+        width: 1px;
+        max-height: 80vh;
+    }
+}
+@media (min-width: 700px) {
+    .container {
+        padding: 6rem 4rem;
+    }
+}
+@media (min-width: 1000px) {
+    .container {
+        padding: 10rem 14rem;
+    }
+}
+@media (min-width: 1650px) {
+    .container {
+        padding: 10rem 18rem;
+    }
 }

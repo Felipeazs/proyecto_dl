@@ -31,9 +31,9 @@ const Footer = () => {
                 </form>
                 <div className={styles.rrss}>
                     <div>
-                        <a>Norma BS 8001:2017</a>
+                        <a href='https://knowledge.bsigroup.com/products/framework-for-implementing-the-principles-of-the-circular-economy-in-organizations-guide/standard' target='_blank'>Framework BS 8001:2017</a>
                         <a>Blog</a>
-                        <a>Recursos Externos</a>
+                        <a href='https://www.bsigroup.com/en-GB/standards/benefits-of-using-standards/becoming-more-sustainable-with-standards/BS8001-Circular-Economy/' target='_blank'>Recursos Externos</a>
                     </div>
                     <div>
                         <a>Facebook</a>

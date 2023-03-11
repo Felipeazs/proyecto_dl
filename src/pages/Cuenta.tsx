@@ -20,7 +20,7 @@ interface DataTypes {
 const Cuenta = () => {
     const { getDiagnosticos } = useHttp()
     const { userId, token } = useContext(UsuarioContext)
-    const [panel, setPanel] = useState('datos_personales')
+    const [panel, setPanel] = useState('resultados')
     const [resultados, setResultados] = useState<DataTypes[]>([{ porcentajeTotal: 0, puntajeTotal: 0, nivelMadurez: 0, respuestas: {}, createdAt: new Date(), _id: '' }])
     const [loading, setLoading] = useState<boolean>(true)
 

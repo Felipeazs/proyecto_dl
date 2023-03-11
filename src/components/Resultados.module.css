@@ -13,9 +13,11 @@ ul {
     border-bottom: none;
     border-radius: 5px;
     padding: 0% 5%;
+    min-width: max-content;
 }
 .tabs li:hover {
     background-color: #82bb85;
+    border: 1px solid #82bb85;
     color: white;
     cursor: pointer;
 }
@@ -29,11 +31,12 @@ ul {
 }
 .tabs .active {
     background-color: #80DA83;
+    border: 1px solid #80DA83;
     color: white;
     font-weight: 800;
 }
 
-@media (min-width: 930px) {
+@media (min-width: 1050px) {
     .contenido {
         width: 75%;
     }

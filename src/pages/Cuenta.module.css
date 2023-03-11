@@ -1,34 +1,43 @@
 .cuenta {
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
     text-align: start;
     line-height: 2rem;
 }
 .cuenta .panel_lateral {
-    width: 30%;
-    text-align: end;
+    width: 90%;
 }
 .cuenta .panel_principal {
-    width: 70%;
+    width: 90%;
 }
-.panel_lateral hr {
-    width: 100%;
-    border-top: 1px solid #DDD;
+.cuenta .divisor_vertical {
+    display: none;
 }
 .panel_lateral li {
     transition: 0.15s ease-in;
 }
 .panel_lateral li:hover {
-    background-color: #82BB85;
+    background-color: #82bb85;
     color: #ffffff;
     cursor: pointer;
 }
 .panel_lateral span {
     font-size: 1.1rem;
 }
-
-@media (min-width: 930px) {
+@media (min-width: 530px) {
+    .cuenta .panel_principal {
+        width: 60%;
+        padding-left: 5%;
+    }
     .cuenta .panel_lateral {
         width: 20%;
+        text-align: end;
+        padding-right: 5%;
+        min-width: 150px;
+    }
+    .cuenta .divisor_vertical {
+        display: inline-block;
     }
 }
