@@ -51,6 +51,7 @@ const Resultados = ({ data }: { data: DataTypes[] }) => {
                     {data
                         .map((d) => d.respuestas[1])
                         .filter((item, index, arr) => arr.indexOf(item) === index)
+                        .sort()
                         .map((f, i) => (
                             <option value={f} key={i}>
                                 {f}

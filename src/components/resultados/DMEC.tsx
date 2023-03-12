@@ -44,7 +44,6 @@ const DMEC = ({ data }: { data: DataTypes[] }) => {
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>id</th>
                             <th>proyecto</th>
                             <th data-tooltip-id='pa' data-tooltip-content='max: 36' data-tooltil-place='top'>
                                 puntaje
@@ -62,7 +61,6 @@ const DMEC = ({ data }: { data: DataTypes[] }) => {
                         {data.map((d, i) => (
                             <tr key={i} onClick={() => resultadoHandler(d._id, i + 1)}>
                                 <td>{i + 1}</td>
-                                <td>{d._id}</td>
                                 <td>
                                     <span>{d.respuestas[1]}</span>
                                 </td>

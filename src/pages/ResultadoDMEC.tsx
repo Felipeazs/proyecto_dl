@@ -30,6 +30,7 @@ const ResultadoDMEC = () => {
             const { diagnostico } = await getDiagnostico(userId, token, id)
             setDiagnostico(diagnostico)
         }
+
         fetching()
     }, [id])
 

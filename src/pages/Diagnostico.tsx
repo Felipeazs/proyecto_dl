@@ -30,6 +30,9 @@ const Diagnostico = () => {
     const [puntajeTotal, setPuntajeTotal] = useState<number>(0)
     const [porcentajeTotal, setPorcentajeTotal] = useState<number>(0)
     const [primerAnalisis, setPrimerAnalisis] = useState<string>('')
+    const [isP2Checked, setIsP2Checked] = useState<string>('')
+    const [isP3Checked, setIsP3Checked] = useState<string>('')
+    const [isP4Checked, setIsP4Checked] = useState<string>('')
     const [p5, setP5] = useState<string[]>([])
     const [isP5Checked, setIsP5Checked] = useState<boolean[]>(new Array(7).fill(false))
     const [p6, setP6] = useState<string[]>([])
@@ -72,7 +75,72 @@ const Diagnostico = () => {
         fetching()
     }, [])
 
-    const inputHandler = (event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>) => {
+    const proyectoHandler = (event: ChangeEvent<HTMLSelectElement>) => {
+        const { name, value } = event.target
+
+        setRespuestas((prevState) => {
+            return {
+                ...prevState,
+                [name]: value,
+            }
+        })
+
+        if (value) {
+            const proyecto = proyectos.find(p => p.respuestas[1] === value)
+            setIsP2Checked(proyecto.respuestas[2])
+            setearRespuestas(2, proyecto.respuestas[2])
+            setIsP3Checked(proyecto.respuestas[3])
+            setearRespuestas(3, proyecto.respuestas[3])
+            setIsP4Checked(proyecto.respuestas[4])
+            setearRespuestas(4, proyecto.respuestas[4])
+
+            const p5arr = data[5].opciones.filter((ele, i) => {
+                if (proyecto.respuestas[5].includes(ele)) {
+                    isP5Checked[i] = true
+                    return i
+                }
+            })
+            setIsP5Checked(isP5Checked)
+            setP5(p5arr)
+            setearRespuestas(5, p5arr)
+
+            const p6arr = data[6].opciones.filter((ele, i) => {
+                if (proyecto.respuestas[6].includes(ele)) {
+                    isP6Checked[i] = true
+                    return i
+                }
+            })
+            setIsP6Checked(isP6Checked)
+            setP6(p6arr)
+            setearRespuestas(6, p6arr)
+
+        } else {
+            setIsP2Checked('')
+            setIsP3Checked('')
+            setIsP4Checked('')
+            setIsP5Checked(new Array(7).fill(false))
+            setIsP6Checked(new Array(7).fill(false))
+        }
+
+        setRespuestas((prevState) => {
+            return {
+                ...prevState,
+                [name]: value,
+            }
+        })
+
+    }
+
+    const setearRespuestas = (name: number, value: any) => {
+        setRespuestas((prevState) => {
+            return {
+                ...prevState,
+                [name]: value,
+            }
+        })
+    }
+
+    const inputHandler = (event: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target
         setRespuestas((prevState) => {
             return {
@@ -90,6 +158,13 @@ const Diagnostico = () => {
                 [name]: value,
             }
         })
+        if (name === '2') {
+            setIsP2Checked(value)
+        } else if (name === '3') {
+            setIsP3Checked(value)
+        } else if (name === '4') {
+            setIsP4Checked(value)
+        }
     }
 
     const p5Handler = (event: ChangeEvent<HTMLInputElement>) => {
@@ -705,11 +780,12 @@ const Diagnostico = () => {
                         <br />
                         <div className={styles.input_nuevo}>
                             <label htmlFor="">1. Selecciona el proyecto que deseas reevaluar o escribe el nombre del nuevo proyecto:</label>
-                            <select name="1" onChange={inputHandler}>
-                                <option value={new Date().toLocaleDateString()}>Selecciona un proyecto</option>
+                            <select name="1" onChange={proyectoHandler}>
+                                <option value=''>Selecciona un proyecto</option>
                                 {proyectos
                                     .map((d) => d.respuestas[1])
                                     .filter((item, index, arr) => arr.indexOf(item) === index)
+                                    .sort()
                                     .map((f, i) => (
                                         <option value={f} key={i}>
                                             {f}
@@ -718,9 +794,9 @@ const Diagnostico = () => {
                             </select>
                             <input type="text" name="1" placeholder="Nombre nuevo proyecto" onChange={inputHandler} />
                         </div>
-                        <Radio pregunta={data[2].pregunta} opciones={data[2].opciones} id={data[2].id} onChange={radioHandler} />
-                        <Radio pregunta={data[3].pregunta} opciones={data[3].opciones} id={data[3].id} onChange={radioHandler} />
-                        <Radio pregunta={data[4].pregunta} opciones={data[4].opciones} id={data[4].id} onChange={radioHandler} />
+                        <Radio pregunta={data[2].pregunta} opciones={data[2].opciones} id={data[2].id} isChecked={isP2Checked} onChange={radioHandler} />
+                        <Radio pregunta={data[3].pregunta} opciones={data[3].opciones} id={data[3].id} isChecked={isP3Checked} onChange={radioHandler} />
+                        <Radio pregunta={data[4].pregunta} opciones={data[4].opciones} id={data[4].id} isChecked={isP4Checked} onChange={radioHandler} />
                     </>
                 )}
                 {isItem === 2 && (
@@ -809,7 +885,7 @@ const Diagnostico = () => {
                 )}
                 <div className={styles.buttons}>{isItem !== 11 && <Button title='Siguiente' type='button' clickHandler={buttonClickHandler} />}</div>
             </form>
-        </div>
+        </div >
     )
 }
 
