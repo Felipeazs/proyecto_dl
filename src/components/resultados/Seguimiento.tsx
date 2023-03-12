@@ -37,7 +37,7 @@ const Seguimiento = ({ data }: { data: DataTypes[] }) => {
         plugins: {
             title: {
                 display: true,
-                text: data.length ? `Seguimiento temporal del Nivel de Madurez del proyecto: ${data[0].respuestas[1]}` : 'Seleccione un proyecto o realice un análisis DMEC',
+                text: data.length ? `Seguimiento temporal del Nivel de Madurez del proyecto: ${data[0].respuestas[1]}` : 'Seleccione un proyecto o realice un DMEC',
                 padding: 20,
                 font: {
                     size: 20,
