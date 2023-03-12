@@ -47,7 +47,7 @@ const Resultados = ({ data }: { data: DataTypes[] }) => {
             <div className={styles.seleccion}>
                 <h2>Diagnósticos</h2>
                 <select name='proyectos' id='proyectos' onChange={selectHandler}>
-                    <option>Selecciona un proyecto</option>
+                    <option>Seleccione un proyecto</option>
                     {data
                         .map((d) => d.respuestas[1])
                         .filter((item, index, arr) => arr.indexOf(item) === index)

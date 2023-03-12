@@ -44,7 +44,7 @@ const DMEC = ({ data }: { data: DataTypes[] }) => {
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>proyecto</th>
+                            <th>nombre</th>
                             <th data-tooltip-id='pa' data-tooltip-content='max: 36' data-tooltil-place='top'>
                                 puntaje
                             </th>

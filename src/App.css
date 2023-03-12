@@ -95,3 +95,8 @@ select {
         padding: 10rem 18rem;
     }
 }
+.botones {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
