@@ -19,7 +19,6 @@ import mensajes from '../assets/resultados.json'
 
 const customStyles = {
     content: {
-        postion: 'relative',
         top: '50%',
         left: '50%',
         right: 'auto',

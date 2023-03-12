@@ -100,3 +100,6 @@ select {
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
+.ReactModal__Overlay {
+    z-index: 10;
+}
