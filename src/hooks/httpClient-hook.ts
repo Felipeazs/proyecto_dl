@@ -18,8 +18,8 @@ interface UsuarioTypes {
 }
 
 const useHttp = () => {
-    const getUser = async (id: string, token: string): Promise<UsuarioTypes> => {
-        return fetch(`${baseUrl}/api/usuario/${id}`, {
+    const getUser = async (token: string): Promise<UsuarioTypes> => {
+        return fetch(`${baseUrl}/api/usuario`, {
             method: 'GET',
             headers: { 'Authorization': `Bearer ${token}` },
         })
@@ -47,8 +47,8 @@ const useHttp = () => {
             .then((data) => data)
             .catch((err) => console.log(err))
     }
-    const updateUser = async (usuario: { nombre?: string; apellidos?: string; email?: string; telefono?: string }, usuarioId: string, token: string) => {
-        return fetch(`${baseUrl}/api/usuario/${usuarioId}`, {
+    const updateUser = async (usuario: { nombre?: string; apellidos?: string; email?: string; telefono?: string }, token: string) => {
+        return fetch(`${baseUrl}/api/usuario`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -60,8 +60,8 @@ const useHttp = () => {
             .then((data) => data)
             .catch((err) => console.log(err))
     }
-    const postDiagnostico = async (usuarioId: string, token: string, diagnostico: any) => {
-        return fetch(`${baseUrl}/api/usuario/${usuarioId}`, {
+    const postDiagnostico = async (token: string, diagnostico: any) => {
+        return fetch(`${baseUrl}/api/usuario`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -74,8 +74,8 @@ const useHttp = () => {
             .catch((err) => console.log(err))
     }
 
-    const getDiagnosticos = async (usuarioId: string, token: string): Promise<{ diagnostico_encontrado: DataTypes[] }> => {
-        return fetch(`${baseUrl}/api/usuario/${usuarioId}/diagnosticos`, {
+    const getDiagnosticos = async (token: string): Promise<{ diagnostico_encontrado: DataTypes[] }> => {
+        return fetch(`${baseUrl}/api/usuario/diagnosticos`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -87,8 +87,8 @@ const useHttp = () => {
             .catch((err) => console.log(err))
     }
 
-    const getDiagnostico = async (usuarioId: string, token: string, diagnosticoId: string): Promise<{ diagnostico: DataTypes }> => {
-        return fetch(`${baseUrl}/api/usuario/${usuarioId}/diagnostico/${diagnosticoId}`, {
+    const getDiagnostico = async (token: string, diagnosticoId: string): Promise<{ diagnostico: DataTypes }> => {
+        return fetch(`${baseUrl}/api/usuario/diagnostico/${diagnosticoId}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -100,8 +100,8 @@ const useHttp = () => {
             .catch((err) => console.log(err))
     }
 
-    const deleteDiagnostico = async (usuarioId: string, token: string, diagnosticoId: string) => {
-        return fetch(`${baseUrl}/api/usuario/${usuarioId}/diagnostico/${diagnosticoId}`, {
+    const deleteDiagnostico = async (token: string, diagnosticoId: string) => {
+        return fetch(`${baseUrl}/api/usuario/diagnostico/${diagnosticoId}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',

@@ -28,7 +28,8 @@ const DatosPersonales = () => {
 
     useEffect(() => {
         const fetching = async () => {
-            const resultado = await getUser(userId, token)
+            const resultado = await getUser(token)
+
             setUsuario({ nombre: resultado.nombre, apellidos: resultado.apellidos, email: resultado.email, telefono: resultado.telefono })
 
             setLoading(false)
@@ -70,18 +71,20 @@ const DatosPersonales = () => {
         event.preventDefault()
 
         setLoading(true)
-        const resultado = await updateUser(usuario, userId, token)
+
+        const resultado = await updateUser(usuario, token)
+
         const usuario_updated = {
-            nombre: resultado.usuario.nombre,
-            apellidos: resultado.usuario.apellidos,
-            email: resultado.usuario.email,
-            telefono: resultado.usuario.telefono,
+            nombre: resultado?.usuario.nombre || '',
+            apellidos: resultado?.usuario.apellidos,
+            email: resultado?.usuario.email,
+            telefono: resultado?.usuario.telefono,
         }
 
         setUsuario(usuario_updated)
         setLoading(false)
 
-        toast.success('Datos personales actualizados')
+        toast.success(resultado.msg)
     }
 
     const cancelarHandler = () => {

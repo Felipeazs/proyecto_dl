@@ -32,7 +32,7 @@ const ResultadoDMEC = () => {
     const navigate = useNavigate()
     const { n, id } = useParams()
     const { getDiagnostico, deleteDiagnostico } = useHttp()
-    const { userId, token } = useContext(GlobalContext)
+    const { token } = useContext(GlobalContext)
     const [diagnostico, setDiagnostico] = useState({ puntajeTotal: 0, porcentajeTotal: 0, nivelMadurez: 0, respuestas: {} })
     const [modalIsOpen, setModalIsOpen] = useState<boolean>(false)
 
@@ -40,7 +40,7 @@ const ResultadoDMEC = () => {
 
     useEffect(() => {
         const fetching = async () => {
-            const { diagnostico } = await getDiagnostico(userId, token, id)
+            const { diagnostico } = await getDiagnostico(token, id)
             setDiagnostico(diagnostico)
         }
 
@@ -64,7 +64,7 @@ const ResultadoDMEC = () => {
     }
 
     const eliminarHandler = async (id: string) => {
-        await deleteDiagnostico(userId, token, id)
+        await deleteDiagnostico(token, id)
         toast.info('Diagnóstico eliminado')
         volverHandler()
     }

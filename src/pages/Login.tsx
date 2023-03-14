@@ -38,20 +38,8 @@ const Login = () => {
 
         const usuario = await loginUser(credenciales)
 
-        if (usuario.error === '400') {
-            toast.error('Ingrese los datos correctamente')
-            return
-        }
-        if (usuario.error === '403') {
-            toast.error('El usuario ha ingresado credenciales incorrectas')
-            return
-        }
-        if (usuario.error === '404') {
-            toast.error('El usuario ingresado no existe en nuestra base de datos')
-            return
-        }
-        if (usuario.error === '500') {
-            toast.error('Hemos tenido problemas con el servidos, inténtelo más tarde')
+        if (usuario.code) {
+            toast.error(usuario.message)
             return
         }
 
@@ -73,16 +61,8 @@ const Login = () => {
 
         const usuario = await signupUser(credenciales)
 
-        if (usuario.error === '302') {
-            toast.error('El usuario ya existe en nuestra base de datos')
-            return
-        }
-        if (usuario.error === '400') {
-            toast.error('Los campos ingresados son incorrectos')
-            return
-        }
-        if (usuario.error === '500') {
-            toast.error('Hemos tenido problemas con el servidor, por favor inténtelo más tarde')
+        if (usuario.code) {
+            toast.error(usuario.message)
             return
         }
 

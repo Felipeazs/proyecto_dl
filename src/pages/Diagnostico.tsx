@@ -69,7 +69,7 @@ const Diagnostico = () => {
         }
 
         const fetching = async () => {
-            const { diagnostico_encontrado } = await getDiagnosticos(userId, token)
+            const { diagnostico_encontrado } = await getDiagnosticos(token)
             setProyectos(diagnostico_encontrado)
         }
         fetching()
@@ -766,7 +766,7 @@ const Diagnostico = () => {
             respuestas,
         }
 
-        await postDiagnostico(userId, token, diagnostico)
+        await postDiagnostico(token, diagnostico)
     }
 
     return (
@@ -782,7 +782,7 @@ const Diagnostico = () => {
                             <label htmlFor="">1. Selecciona el proyecto que deseas reevaluar o escribe el nombre del nuevo proyecto:</label>
                             <select name="1" onChange={proyectoHandler}>
                                 <option value=''>Selecciona un proyecto</option>
-                                {proyectos
+                                {proyectos && proyectos
                                     .map((d) => d.respuestas[1])
                                     .filter((item, index, arr) => arr.indexOf(item) === index)
                                     .sort()
@@ -792,7 +792,7 @@ const Diagnostico = () => {
                                         </option>
                                     ))}
                             </select>
-                            <input type="text" name="1" placeholder="Nombre nuevo proyecto" onChange={inputHandler} />
+                            <input type="text" name="1" placeholder="Nombre del nuevo proyecto" onChange={inputHandler} />
                         </div>
                         <Radio pregunta={data[2].pregunta} opciones={data[2].opciones} id={data[2].id} isChecked={isP2Checked} onChange={radioHandler} />
                         <Radio pregunta={data[3].pregunta} opciones={data[3].opciones} id={data[3].id} isChecked={isP3Checked} onChange={radioHandler} />

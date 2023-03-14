@@ -19,7 +19,7 @@ interface DataTypes {
 }
 const Cuenta = () => {
     const { getDiagnosticos } = useHttp()
-    const { userId, token } = useContext(UsuarioContext)
+    const { token } = useContext(UsuarioContext)
     const [panel, setPanel] = useState('resultados')
     const [resultados, setResultados] = useState<DataTypes[]>([{ porcentajeTotal: 0, puntajeTotal: 0, nivelMadurez: 0, respuestas: {}, createdAt: new Date(), _id: '' }])
     const [loading, setLoading] = useState<boolean>(true)
@@ -27,7 +27,7 @@ const Cuenta = () => {
     useEffect(() => {
         window.scrollTo(0, 0)
         const fetching = async () => {
-            const { diagnostico_encontrado } = await getDiagnosticos(userId, token)
+            const { diagnostico_encontrado } = await getDiagnosticos(token)
             setResultados(diagnostico_encontrado)
 
             setLoading(false)

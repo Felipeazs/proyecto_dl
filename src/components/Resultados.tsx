@@ -48,7 +48,7 @@ const Resultados = ({ data }: { data: DataTypes[] }) => {
                 <h2>Diagnósticos</h2>
                 <select name='proyectos' id='proyectos' onChange={selectHandler}>
                     <option>Seleccione un proyecto</option>
-                    {data
+                    {data && data
                         .map((d) => d.respuestas[1])
                         .filter((item, index, arr) => arr.indexOf(item) === index)
                         .sort()
